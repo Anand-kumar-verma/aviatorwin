@@ -31,3 +31,14 @@ export const zubgcrickblue = '#613EF0';
 export const zubgcrickorange = '#00A260';
 export const zubgcrickgred = "#005543";
 export const zubgcricklight = "#00B55E";
+
+
+export const avblack = "#0C0A0B";
+export const avred1 = "#3F111C";
+export const avred2 = "#731A2E";
+export const avred3 = "#9B2231";
+export const avwhite = "#fff";
+export const avgrad = "linear-gradient(98.3deg, rgb(0, 0, 0) 10.6%, rgb(255, 0, 0) 97.7%)";
+export const avgreen = "#45F882";
+export const avblue = "#0c072c";
+

@@ -23,18 +23,23 @@ import { useFormik } from "formik";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { NavLink, useNavigate } from "react-router-dom";
-import backbtn from "../../assets/images/backBtn.png";
 import custom from "../../assets/images/customer.jpg";
 import logemailactive from "../../assets/images/logemailactive.png";
-import logemaildeactive from "../../assets/images/maill.jpg";
 import logphoneactive from "../../assets/images/logophoneactive.jpg";
 import logphonedeactive from "../../assets/images/logphonedeactive.png";
-import password from "../../assets/images/psw.jpg";
+import logemaildeactive from "../../assets/images/maill.jpg";
 import phoneaa from "../../assets/images/Phone.jpg";
+import password from "../../assets/images/psw.jpg";
 import { storeCookies } from "../../services/apiCallings";
 import { endpoint } from "../../services/urls";
 import { deCryptData, enCryptData } from "../../shared/secret";
+import logo from '../../assets/images/logo.png'
+import { avblue } from "../../shared/color";
+
+
 function Login() {
+
+  const [nav, setnav] = useState('1')
   const [value, setValue] = useState("one");
   const user_id = deCryptData(localStorage.getItem("user_id"));
   const navigate = useNavigate();
@@ -81,9 +86,9 @@ function Login() {
         toast(res?.data?.message);
         localStorage.setItem("user_id", enCryptData(res?.data?.data?.or_user_id));
         localStorage.setItem("or_m_user_type", enCryptData(res?.data?.data?.or_m_user_type));
-        
+
         window.location.reload();
-       navigate("/dashboard");
+        navigate("/dashboard");
       } else {
         toast(res?.data?.msg);
       }
@@ -93,8 +98,8 @@ function Login() {
   }
 
   useEffect(() => {
-    user_id && 
-    navigate("/dashboard");
+    user_id &&
+      navigate("/dashboard");
   }, [user_id]);
 
   useEffect(() => {
@@ -109,98 +114,40 @@ function Login() {
     };
   }, [fk]);
   return (
-    <Container>
+    <Container sx={{ background: avblue }}>
       <Box
-      className="bg-[#E4063A]"
         sx={{
           padding: 1,
           px: 2,
           "&>p": { color: "white" },
         }}
       >
-        <NavLink to="/">
-          <Box component="img" src={backbtn} width={25}></Box>
-        </NavLink>
-        <Typography
-          variant="body1"
-          color="initial"
-          sx={{ fontWeight: "600", mt: 2, mb: 1, fontSize: "14px" }}
-        >
-          Log in
-        </Typography>
-        <Typography
-          variant="body1"
-          color="initial"
-          sx={{ fontWeight: "400", fontSize: "12px" }}
-        >
-          Please log in with your phone number or email
-        </Typography>
-        <Typography
-          variant="body1"
-          color="initial"
-          sx={{ fontWeight: "400", fontSize: "12px", mb: 3 }}
-        >
-          If you forget your password, please contact customer service
-        </Typography>
+        <Box sx={{
+          width: '200px',
+          margin: 'auto',
+          padding: '21px 0px',
+          transform: 'rotate(5deg)',
+        }} component='img' src={logo}></Box>
       </Box>
+      {/* <button className="th-btn style2">Click Me1</button>
+      <button className="th-btn style3">Click Me2</button>
+      <button className="th-btn style4">Click Me3</button> */}
       <Box sx={{ width: "92%", margin: "auto" }}>
         <Tabs value={value} onChange={handleChange}>
           <Tab
-            sx={{ width: "50%" }}
+            sx={{ width: "50%", color: 'white', }}
             value="one"
             label={
               <Box>
-                {value === "one" ? (
-                  <Box
-                    component="img"
-                    src={logphoneactive}
-                    sx={{
-                      margin: "auto",
-                      width: "25px",
-                      mb: "10px !important",
-                    }}
-                  ></Box>
-                ) : (
-                  <Box
-                    component="img"
-                    src={logphonedeactive}
-                    sx={{
-                      margin: "auto",
-                      width: "25px",
-                      mb: "10px !important",
-                    }}
-                  ></Box>
-                )}
                 Log in with phone
               </Box>
             }
           />
           <Tab
-            sx={{ width: "50%" }}
+            sx={{ width: "50%", color: 'white' }}
             value="two"
             label={
               <Box>
-                {value === "two" ? (
-                  <Box
-                    component="img"
-                    src={logemaildeactive}
-                    sx={{
-                      margin: "auto",
-                      width: "25px",
-                      mb: "10px !important",
-                    }}
-                  ></Box>
-                ) : (
-                  <Box
-                    component="img"
-                    src={logemailactive}
-                    sx={{
-                      margin: "auto",
-                      width: "25px",
-                      mb: "10px !important",
-                    }}
-                  ></Box>
-                )}
                 Log in with email
               </Box>
             }
@@ -211,11 +158,6 @@ function Login() {
         {value === "one" && (
           <Box component="form" onSubmit={fk.handleSubmit}>
             <Stack direction="row" alignItems="center">
-              <Box
-                component="img"
-                src={phoneaa}
-                sx={{ width: "25px", mr: 1 }}
-              ></Box>
               <Typography
                 variant="body1"
                 color="initial"
@@ -229,23 +171,7 @@ function Login() {
               justifyContent="space-between"
               alignItems="center"
             >
-              <Box sx={{ width: "30%" }}>
-                <FormControl fullWidth sx={{ ...style.selectfield }}>
-                  <Select
-                    value={country}
-                    onChange={handleChangesetCountry}
-                    displayEmpty
-                  >
-                    <MenuItem value="">
-                      <em>+91 India</em>
-                    </MenuItem>
-                    <MenuItem value={+971}>+971 UAE </MenuItem>
-                    <MenuItem value={+977}>+977 Nepal</MenuItem>
-                    <MenuItem value={+92}>+92 Pakistan</MenuItem>
-                  </Select>
-                </FormControl>
-              </Box>
-              <Box sx={{ width: "65%" }}>
+              <Box sx={{ width: "100%" }}>
                 <FormControl fullWidth sx={{ ...style.inputfield }}>
                   <TextField
                     id="mobile"
@@ -260,14 +186,8 @@ function Login() {
                 </FormControl>
               </Box>
             </Stack>
-
             <Box mt={2}>
               <Stack direction="row" alignItems="center">
-                <Box
-                  component="img"
-                  src={password}
-                  sx={{ width: "25px", mr: 1 }}
-                ></Box>
                 <Typography
                   variant="body1"
                   color="initial"
@@ -304,11 +224,6 @@ function Login() {
           <Box component="form" onSubmit={fk.handleSubmit}>
             <Box>
               <Stack direction="row" alignItems="center">
-                <Box
-                  component="img"
-                  src={logemaildeactive}
-                  sx={{ width: "25px", mr: 1 }}
-                ></Box>
                 <Typography
                   variant="body1"
                   color="initial"
@@ -333,11 +248,6 @@ function Login() {
             </Box>
             <Box mt={2}>
               <Stack direction="row" alignItems="center">
-                <Box
-                  component="img"
-                  src={password}
-                  sx={{ width: "25px", mr: 1 }}
-                ></Box>
                 <Typography
                   variant="body1"
                   color="initial"
@@ -373,6 +283,7 @@ function Login() {
         <Box mt={3}>
           <FormGroup mt={3}>
             <FormControlLabel
+              sx={{ color: 'white' }}
               control={<Checkbox defaultChecked />}
               label="Remember password"
             />
@@ -383,18 +294,18 @@ function Login() {
             // onClick={() => fk.handleClickShowPassword()}
             onClick={() => fk.handleSubmit()}
             sx={{
-              boxShadow: " 0px 3px #b6bad0",
-              padding: "10px",
+              // boxShadow: " 0px 3px #b6bad0",
+              // padding: "10px",
               width: "100%",
-              background: "#CACCDB",
-              color: "white",
-              borderRadius: "20px",
-              mb: 2,
-              fontWeight: "700",
-              "&:hover": { background: "#b6bad0" },
+              // background: "#CACCDB",
+              // color: "white",
+              // borderRadius: "20px",
+              // mb: 2,
+              // fontWeight: "700",
+              // "&:hover": { background: "#b6bad0" },
             }}
             disableElevation
-            className={`${(fk.values.email || fk.values.password || fk.values.mobile) && "!bg-red-400"} `}
+            className={`${(fk.values.email || fk.values.password || fk.values.mobile) && "!bg-red-400"} th-btn style2`}
           >
             Log in
           </Button>
@@ -445,7 +356,7 @@ const style = {
     "&>div>div>input": {
       background: "white",
       padding: 3,
-      borderRadius: "10px",
+      borderRadius: "5px",
       boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;",
     },
     "&>div>div>fieldset ": { border: "none !important" },
@@ -462,26 +373,12 @@ const style = {
       mt: 2,
       background: "white",
       boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;",
-      borderRadius: "10px",
+      borderRadius: "5px",
     },
     "&>div::before": { border: "none !important" },
     "&>div::after:focus": {
       border: "none !important",
       border: "1px solid #F18401  !important",
     },
-  },
-  selectfield: {
-    "&>div>div": {
-      background: "white",
-      borderRadius: "10px",
-      padding: "11px 3px",
-      borderRadius: "10px",
-    },
-    "&>div>fieldset": {
-      border: "1px solid white",
-      boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;",
-      borderRadius: "10px",
-    },
-    "&>div": { mt: 2 },
   },
 };
