@@ -9,6 +9,9 @@ import avaitorcategory3 from "../../../assets/images/avv.png";
 import lotteryimg from "../../../assets/images/lottery.png";
 import win3 from "../../../assets/images/win3.png";
 import { endpoint } from "../../../services/urls";
+import { avred1 } from "../../../shared/color";
+import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
+
 
 function Lottery() {
   const [status, setStatus] = useState(false);
@@ -29,11 +32,11 @@ function Lottery() {
   return (
     <Box sx={{ padding: "15px" }}>
       <Stack direction="row" sx={{ alignItems: "center", mb: 2 }}>
-        <Box component="img" src={lotteryimg} width={25}></Box>
+        <Box component="img" src={lotteryimg} width={25} sx={{ filter: 'grayscale(1)' }}></Box>
         <Typography
           variant="body1"
           color="initial"
-          sx={{ ml: 1, fontSize: "15px", fontWeight: 600 }}
+          sx={{ ml: 1, fontSize: "15px", fontWeight: 600, color: avred1 }}
         >
           Lottery
         </Typography>
@@ -67,7 +70,7 @@ function Lottery() {
           </Box>
         </Box>
       </NavLink>
-      
+
     </Box>
   );
 }

@@ -2,7 +2,7 @@
     /* font-family: "Montserrat", sans-serif !important; */
     margin: 0;
     box-sizing: border-box !important;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+    font-family: "Rajdhani", sans-serif !important;
 }
 
 body {
@@ -572,26 +572,26 @@ button {
 
 
 .th-btn {
-    position: relative;
-    z-index: 2;
-    overflow: hidden;
-    vertical-align: middle;
-    display: inline-flex;
-    align-items: center;
-    border: none;
-    text-align: center;
-    background-color: #45F882;
-    color: red;
-    font-family: var(--title-font);
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 1;
-    padding: 20px 30px;
-    min-width: 200px;
-    border-radius: 0px;
-    justify-content: center;
-    clip-path: polygon(15px 0%, calc(100% - 15px) 0%, 100% 50%, calc(100% - 15px) 100%, 15px 100%, 0% 50%);
-    transition: 0.2s;
+    position: relative !important;
+    z-index: 2 !important;
+    overflow: hidden !important;
+    vertical-align: middle !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    border: none !important;
+    text-align: center !important;
+    background-color: #E4063A !important;
+    color: rgb(255, 255, 255) !important;
+    font-family: var(--title-font) !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    padding: 15px 30px !important;
+    min-width: 200px !important;
+    border-radius: 0px !important;
+    justify-content: center !important;
+    clip-path: polygon(15px 0%, calc(100% - 15px) 0%, 100% 50%, calc(100% - 15px) 100%, 15px 100%, 0% 50%) !important;
+    transition: 0.2s !important;
 }
 
 .th-btn:before,
@@ -615,241 +615,107 @@ button {
     transform: rotate(180deg);
 }
 
-.th-btn i {
-    transition: 0.4s all;
+.th-btn2 {
+    position: relative !important;
+    z-index: 2 !important;
+    overflow: hidden !important;
+    vertical-align: middle !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    border: none !important;
+    text-align: center !important;
+    background-color: white !important;
+    color: #E4063A !important;
+    font-family: var(--title-font) !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    padding: 15px 30px !important;
+    min-width: 200px !important;
+    border-radius: 0px !important;
+    justify-content: center !important;
+    clip-path: polygon(15px 0%, calc(100% - 15px) 0%, 100% 50%, calc(100% - 15px) 100%, 15px 100%, 0% 50%) !important;
+    transition: 0.2s !important;
 }
 
-.th-btn:hover,
-.th-btn.active {
-    background: white;
-    clip-path: polygon(0px 0%, 100% 0%, 100% 50%, 100% 100%, 0 100%, 0% 50%);
-    color: red;
-}
-
-.th-btn:hover:before,
-.th-btn.active:before,
-.th-btn:hover:after,
-.th-btn.active:after {
-    clip-path: polygon(2px 60%, 2px calc(100% - 2px), 100% calc(100% - 0px), 100% 100%, 0 100%, 0 100%);
-}
-
-.th-btn.style2 {
+.th-btn2:before,
+.th-btn2:after {
+    content: "";
+    position: absolute;
     background-color: #E4063A;
-    padding: 10px;
-}
-
-.th-btn.style2:hover {
-    background: #45F882;
-}
-
-.th-btn.style3 {
-    background: transparent;
-}
-
-.th-btn.style3:hover {
-    color: red;
-}
-
-.th-btn.style3:hover:before,
-.th-btn.style3:hover:after {
-    background-color: white;
-}
-
-.th-btn.style4 {
-    background-color: white;
-    color: white;
-}
-
-.th-btn.style4:hover {
-    color: white;
-}
-
-.th-btn.style4:hover:before,
-.th-btn.style4:hover:after {
-    background-color: red;
-}
-
-.th-btn.style5 {
-    background-color: #45F882;
-    color: white;
-}
-
-.th-btn.style5:hover {
-    color: #45F882;
-}
-
-.th-btn.style5:hover:before,
-.th-btn.style5:hover:after {
-    background-color: white;
-}
-
-.th-btn.style6 {
-    background-color: red;
-}
-
-.th-btn.style6:hover {
-    color: #45F882;
-}
-
-.th-btn.style6:hover:before,
-.th-btn.style6:hover:after {
-    background-color: white;
-}
-
-.th-btn.style7 {
-    background-color: white;
-    color: red;
-}
-
-.th-btn.style7:hover {
-    color: white;
-}
-
-.th-btn.style7:hover:before,
-.th-btn.style7:hover:after {
-    background-color: red;
-}
-
-.th-btn.style-border {
-    display: inline-block;
-    clip-path: polygon(15px 0%, calc(100% - 15px) 0%, 100% 50%, calc(100% - 15px) 100%, 15px 100%, 0% 50%);
-    background: #45F882;
-    padding: 0;
-}
-
-.th-btn.style-border .btn-border {
-    display: inline-block;
-    background-color: red;
-    clip-path: polygon(15px 0%, calc(100% - 15px) 0%, 100% 50%, calc(100% - 15px) 100%, 15px 100%, 0% 50%);
-    border: 0;
-    width: -webkit-fill-available;
-    color: white;
+    z-index: -1;
+    transition: all 0.4s ease-out;
+    top: 5px;
+    left: 5px;
+    width: 16px;
+    height: calc(100% - 10px);
     border-radius: 0;
-    margin: 2px;
-    padding: 19px 30px;
+    clip-path: polygon(85% 0, 100% 0, 15% 50%, 100% 100%, 85% 100%, 0% 50%);
 }
 
-.th-btn.style-border:before,
-.th-btn.style-border:after {
-    clip-path: polygon(45% 0, 50% 0, 5% 50%, 50% 100%, 45% 100%, 0% 50%);
-    top: 6px;
-    left: 6px;
-    width: 26px;
-    height: calc(100% - 12px);
-    background: #45F882;
-    z-index: 1;
-}
-
-.th-btn.style-border:after {
-    right: 6px;
+.th-btn2:after {
+    right: 5px;
     left: auto;
+    transform: rotate(180deg);
 }
 
-.th-btn.style-border:hover {
-    clip-path: polygon(0px 0%, 100% 0%, 100% 50%, 100% 100%, 0 100%, 0% 50%);
+
+.main_heading h5 {
+    color: #e4063a !important;
+    font-weight: 600 !important;
+    font-size: 25px !important;
 }
 
-.th-btn.style-border:hover .btn-border {
-    clip-path: polygon(0px 0%, 100% 0%, 100% 50%, 100% 100%, 0 100%, 0% 50%);
+.fp13 {
+    font-size: 13px !important;
+    font-weight: 600 !important;
 }
 
-.th-btn.style-border:hover:before,
-.th-btn.style-border:hover:after {
-    clip-path: polygon(2px 50%, 2px calc(100% - 2px), 100% calc(100% - 0px), 100% 100%, 0 100%, 0 100%);
+.fp14 {
+    font-size: 14px !important;
+    font-weight: 600 !important;
 }
 
-.th-btn.style-border2 {
-    display: inline-block;
-    clip-path: polygon(15px 0%, calc(100% - 15px) 0%, 100% 50%, calc(100% - 15px) 100%, 15px 100%, 0% 50%);
-    background: white;
-    padding: 0;
+.fp15 {
+    font-size: 15px !important;
+    font-weight: 600 !important;
 }
 
-.th-btn.style-border2 .btn-border {
-    display: inline-block;
-    background-color: red;
-    clip-path: polygon(15px 0%, calc(100% - 15px) 0%, 100% 50%, calc(100% - 15px) 100%, 15px 100%, 0% 50%);
-    border: 0;
-    width: -webkit-fill-available;
-    color: #45F882;
-    border-radius: 0;
-    margin: 2px;
-    padding: 19px 30px;
+.fp16 {
+    font-size: 16px !important;
+    font-weight: 600 !important;
 }
 
-.th-btn.style-border2:before,
-.th-btn.style-border2:after {
-    clip-path: polygon(45% 0, 50% 0, 5% 50%, 50% 100%, 45% 100%, 0% 50%);
-    top: 6px;
-    left: 6px;
-    width: 26px;
-    height: calc(100% - 12px);
-    background: white;
-    z-index: 1;
+.fp17 {
+    font-size: 17px !important;
+    font-weight: 600 !important;
 }
 
-.th-btn.style-border2:after {
-    right: 6px;
-    left: auto;
+.fp18 {
+    font-size: 18px !important;
+    font-weight: 600 !important;
 }
 
-.th-btn.style-border2:hover {
-    clip-path: polygon(0px 0%, 100% 0%, 100% 50%, 100% 100%, 0 100%, 0% 50%);
+.fp19 {
+    font-size: 19px !important;
+    font-weight: 600 !important;
 }
 
-.th-btn.style-border2:hover .btn-border {
-    clip-path: polygon(0px 0%, 100% 0%, 100% 50%, 100% 100%, 0 100%, 0% 50%);
+.fp20 {
+    font-size: 20px !important;
+    font-weight: 600 !important;
 }
 
-.th-btn.style-border2:hover:before,
-.th-btn.style-border2:hover:after {
-    clip-path: polygon(2px 50%, 2px calc(100% - 2px), 100% calc(100% - 0px), 100% 100%, 0 100%, 0 100%);
+.fp21 {
+    font-size: 21px !important;
+    font-weight: 600 !important;
 }
 
-.th-btn.style-border3 {
-    display: inline-block;
-    clip-path: polygon(15px 0%, calc(100% - 15px) 0%, 100% 50%, calc(100% - 15px) 100%, 15px 100%, 0% 50%);
-    background: #45F882;
-    padding: 0;
+.err .css-16n1ayq-MuiFormControl-root>div {
+    background-color: transparent !important;
 }
 
-.th-btn.style-border3 .btn-border {
-    display: inline-block;
-    background-color: red;
-    clip-path: polygon(15px 0%, calc(100% - 15px) 0%, 100% 50%, calc(100% - 15px) 100%, 15px 100%, 0% 50%);
-    border: 0;
-    width: -webkit-fill-available;
-    color: white;
-    border-radius: 0;
-    margin: 1px;
-    padding: 19px 30px;
-}
-
-.th-btn.style-border3:before,
-.th-btn.style-border3:after {
-    clip-path: polygon(45% 0, 50% 0, 5% 50%, 50% 100%, 45% 100%, 0% 50%);
-    top: 6px;
-    left: 6px;
-    width: 26px;
-    height: calc(100% - 12px);
-    background: #45F882;
-    z-index: 1;
-}
-
-.th-btn.style-border3:after {
-    right: 6px;
-    left: auto;
-}
-
-.th-btn.style-border3:hover {
-    clip-path: polygon(0px 0%, 100% 0%, 100% 50%, 100% 100%, 0 100%, 0% 50%);
-}
-
-.th-btn.style-border3:hover .btn-border {
-    clip-path: polygon(0px 0%, 100% 0%, 100% 50%, 100% 100%, 0 100%, 0% 50%);
-}
-
-.th-btn.style-border3:hover:before,
-.th-btn.style-border3:hover:after {
-    clip-path: polygon(2px 50%, 2px calc(100% - 2px), 100% calc(100% - 0px), 100% 100%, 0 100%, 0 100%);
+.w95 {
+    width: 95% !important;
+    margin-left: 2.5% !important;
 }

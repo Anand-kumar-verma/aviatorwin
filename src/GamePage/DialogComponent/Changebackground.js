@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { backgroundImageFun } from "../../redux/slices/counterSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "@mui/material";
-import air from "../../assets/air.png";
+import air from "../../assets/images/air.png";
 import { useMediaQuery } from "react-responsive";
 
-const Changebackground = ({ setOpenCustomDialogBox,handleClose }) => {
+const Changebackground = ({ setOpenCustomDialogBox, handleClose }) => {
   const backgroundImage_url = useSelector(
     (state) => state.aviator.backgroundImage_url
   );
@@ -44,12 +44,12 @@ const Changebackground = ({ setOpenCustomDialogBox,handleClose }) => {
       url: "https://res.cloudinary.com/do7kimovl/image/upload/v1709114502/circle_dafpdo.svg",
     },
   ];
-  
+
   return (
     <>
       <div
         className="moved parentdiv relative lg:h-[250px] h-[200px] w-[99.8%] overflow-hidden  rounded-lg py-8  mt-1 border-[1px] border-white border-opacity-20"
-        // style={{ backgroundImage: `url(${backgroundImage_url})`, backgroundSize: 'cover',height:"250px",zIndex: 0, transform: 'translateZ(-10px)'}}
+      // style={{ backgroundImage: `url(${backgroundImage_url})`, backgroundSize: 'cover',height:"250px",zIndex: 0, transform: 'translateZ(-10px)'}}
       >
         <img
           src={imageUrl}
@@ -114,8 +114,8 @@ const Changebackground = ({ setOpenCustomDialogBox,handleClose }) => {
             <img
               key={index}
               src={i.url}
-              
-                className="bg-gray-500 cursor-pointer lg:h-[100px] lg:w-[100px] h-[50px] w-[50px] border-[2px] border-blue-800 rounded-md"
+
+              className="bg-gray-500 cursor-pointer lg:h-[100px] lg:w-[100px] h-[50px] w-[50px] border-[2px] border-blue-800 rounded-md"
               onClick={() => {
                 setImageUrl(i?.url);
               }}

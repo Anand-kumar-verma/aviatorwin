@@ -329,6 +329,7 @@
   from {
     top: 0px;
   }
+
   to {
     top: 30px;
   }
@@ -347,10 +348,12 @@
   from {
     top: 30px;
   }
+
   to {
     top: 60px;
   }
 }
+
 .dot-slider-container3 {
   background: #267bad;
   width: 5px;
@@ -364,10 +367,12 @@
   from {
     top: 60px;
   }
+
   to {
     top: 90px;
   }
 }
+
 .dot-slider-container4 {
   background: #267bad;
   width: 5px;
@@ -381,10 +386,12 @@
   from {
     top: 90px;
   }
+
   to {
     top: 120px;
   }
 }
+
 .dot-slider-container5 {
   background: #267bad;
   width: 5px;
@@ -398,10 +405,12 @@
   from {
     top: 120px;
   }
+
   to {
     top: 150px;
   }
 }
+
 .dot-slider-container6 {
   background: #267bad;
   width: 5px;
@@ -415,10 +424,12 @@
   from {
     top: 150px;
   }
+
   to {
     top: 180px;
   }
 }
+
 .dot-slider-container7 {
   background: #267bad;
   width: 5px;
@@ -432,6 +443,7 @@
   from {
     top: 180px;
   }
+
   to {
     top: 210px;
   }
@@ -450,10 +462,12 @@
   from {
     top: 210px;
   }
+
   to {
     top: 240px;
   }
 }
+
 .dot-slider-container9 {
   background: #267bad;
   width: 5px;
@@ -467,10 +481,12 @@
   from {
     top: 240px;
   }
+
   to {
     top: 270px;
   }
 }
+
 .dot-slider-container10 {
   background: #267bad;
   width: 5px;
@@ -484,10 +500,12 @@
   from {
     top: 270px;
   }
+
   to {
     top: 310px;
   }
 }
+
 .dot-slider-container11 {
   background: #267bad;
   width: 5px;
@@ -501,10 +519,12 @@
   from {
     top: 310px;
   }
+
   to {
     top: 340px;
   }
 }
+
 .dot-slider-container12 {
   background: #267bad;
   width: 5px;
@@ -518,6 +538,7 @@
   from {
     top: 340px;
   }
+
   to {
     top: 370px;
   }
@@ -536,10 +557,12 @@
   from {
     top: 370px;
   }
+
   to {
     top: 400px;
   }
 }
+
 /* bottom dot slide */
 .dot-slider-container_bottom1 {
   background: white;
@@ -554,6 +577,7 @@
   from {
     right: 0px;
   }
+
   to {
     right: 80px;
   }
@@ -572,10 +596,12 @@
   from {
     right: 80px;
   }
+
   to {
     right: 160px;
   }
 }
+
 .dot-slider-container_bottom3 {
   background: white;
   width: 5px;
@@ -589,10 +615,12 @@
   from {
     right: 160px;
   }
+
   to {
     right: 240px;
   }
 }
+
 .dot-slider-container_bottom4 {
   background: white;
   width: 5px;
@@ -606,10 +634,12 @@
   from {
     right: 240px;
   }
+
   to {
     right: 320px;
   }
 }
+
 .dot-slider-container_bottom5 {
   background: white;
   width: 5px;
@@ -623,10 +653,12 @@
   from {
     right: 320px;
   }
+
   to {
     right: 400px;
   }
 }
+
 .dot-slider-container_bottom6 {
   background: white;
   width: 5px;
@@ -640,10 +672,12 @@
   from {
     right: 400px;
   }
+
   to {
     right: 480px;
   }
 }
+
 .dot-slider-container_bottom7 {
   background: white;
   width: 5px;
@@ -657,10 +691,12 @@
   from {
     right: 480px;
   }
+
   to {
     right: 560px;
   }
 }
+
 .dot-slider-container_bottom8 {
   background: white;
   width: 5px;
@@ -674,10 +710,12 @@
   from {
     right: 560px;
   }
+
   to {
     right: 640px;
   }
 }
+
 .dot-slider-container_bottom9 {
   background: white;
   width: 5px;
@@ -691,10 +729,12 @@
   from {
     right: 640px;
   }
+
   to {
     right: 720px;
   }
 }
+
 .dot-slider-container_bottom10 {
   background: white;
   width: 5px;
@@ -708,10 +748,12 @@
   from {
     right: 720px;
   }
+
   to {
     right: 800px;
   }
 }
+
 .dot-slider-container_bottom11 {
   background: white;
   width: 5px;
@@ -725,10 +767,12 @@
   from {
     right: 800px;
   }
+
   to {
     right: 880px;
   }
 }
+
 .dot-slider-container_bottom12 {
   background: white;
   width: 5px;
@@ -742,10 +786,12 @@
   from {
     right: 880px;
   }
+
   to {
     right: 960px;
   }
 }
+
 .dot-slider-container_bottom13 {
   background: white;
   width: 5px;
@@ -759,10 +805,12 @@
   from {
     right: 960px;
   }
+
   to {
     right: 1040px;
   }
 }
+
 .dot-slider-container_bottom14 {
   background: white;
   width: 5px;
@@ -776,15 +824,18 @@
   from {
     right: 1040px;
   }
+
   to {
     right: 1120px;
   }
 }
+
 /* //////////////////////? */
 
 .no-underline {
   display: none;
 }
+
 .selected-tab {
   background-color: red;
 }
@@ -795,15 +846,19 @@
   position: absolute;
   right: 0px;
   width: 0;
-  background-color: #3c3b3b; /* Set the background color you want */
-  border-radius: inherit; /* Make sure the child div has the same border-radius as the parent */
-  animation: widthAnimation 20s ease-in-out infinite; /* Adjust the animation duration as needed */
+  background-color: #3c3b3b;
+  /* Set the background color you want */
+  border-radius: inherit;
+  /* Make sure the child div has the same border-radius as the parent */
+  animation: widthAnimation 20s ease-in-out infinite;
+  /* Adjust the animation duration as needed */
 }
 
 @keyframes widthAnimation {
   from {
     width: 0;
   }
+
   to {
     width: 100%;
   }
@@ -814,23 +869,30 @@
   position: absolute;
   right: 0px;
   width: 0;
-  background-color: #3c3b3b; /* Set the background color you want */
-  border-radius: inherit; /* Make sure the child div has the same border-radius as the parent */
-  animation: widthAnimation 2s ease-in-out infinite; /* Adjust the animation duration as needed */
+  background-color: #3c3b3b;
+  /* Set the background color you want */
+  border-radius: inherit;
+  /* Make sure the child div has the same border-radius as the parent */
+  animation: widthAnimation 2s ease-in-out infinite;
+  /* Adjust the animation duration as needed */
 }
 
 /* //  rotate image */
 .rotate-animation {
-  animation: rotate 2s linear infinite; /* Adjust the animation duration as needed */
+  animation: rotate 2s linear infinite;
+  /* Adjust the animation duration as needed */
 }
+
 .rotate-animation-bg {
-  animation: rotate 20s linear infinite; /* Adjust the animation duration as needed */
+  animation: rotate 20s linear infinite;
+  /* Adjust the animation duration as needed */
 }
 
 @keyframes rotate {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -857,7 +919,7 @@
 /* //////////// win slider */
 .winslider {
   position: absolute;
-  background-image: url("./assets/win.png");
+  background-image: url("./assets/images/win.png");
   animation: winsliderimage 2s linear infinite running;
 }
 
@@ -866,24 +928,29 @@
     top: 0px;
     left: 0px;
   }
+
   100% {
-    top: 100%; /* Change 'bottom' to 'top' for smooth sliding towards the bottom */
+    top: 100%;
+    /* Change 'bottom' to 'top' for smooth sliding towards the bottom */
     left: -100%;
   }
 }
 
 .rotate-div {
-  transform: rotate(-45deg); /* Adjust the angle as needed */
+  transform: rotate(-45deg);
+  /* Adjust the angle as needed */
   transform-origin: bottom left;
 }
 
 .shadow {
   animation: identifier 1s linear forwards running;
 }
+
 @keyframes identifier {
   from {
     width: 0%;
   }
+
   to {
     width: 15%;
   }
@@ -893,13 +960,16 @@
   transform: perspective(-900px) translateZ(-200px);
   animation: bgimagedynamic_ 50s linear infinite running;
 }
+
 @keyframes bgimagedynamic_ {
   0% {
     transform: scaleZ(10) scaleX(1.5);
   }
+
   50% {
     transform: scaleZ(5) scaleX(1);
   }
+
   100% {
     transform: scaleZ(10) scaleX(1.5);
   }
@@ -913,6 +983,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -926,20 +997,25 @@
   from {
     bottom: 0;
   }
+
   to {
     top: 0;
   }
 }
 
 .scrollable-text {
-  height: 10px; /* Set the desired height */
+  height: 10px;
+  /* Set the desired height */
   overflow: hidden;
-  animation: scroll 5s linear infinite; /* Adjust the animation duration as needed */
+  animation: scroll 5s linear infinite;
+  /* Adjust the animation duration as needed */
 }
+
 @keyframes scroll {
   0% {
     transform: translateX(100%);
   }
+
   100% {
     transform: translateX(-100%);
   }
@@ -954,6 +1030,7 @@
   from {
     transform: scale(0);
   }
+
   to {
     transform: scale(1);
   }
@@ -968,6 +1045,7 @@
     height: 0px;
     opacity: 0;
   }
+
   to {
     height: 90px;
     opacity: 1;

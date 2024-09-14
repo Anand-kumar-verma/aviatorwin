@@ -10,7 +10,9 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import ava from "../../assets/images/aviator.jpg";
+import banner4 from "../../assets/images/banner4.jpg";
+import banner2 from "../../assets/images/banner2.jpg";
+import banner3 from "../../assets/images/banner3.jpg";
 import crown1 from "../../assets/images/crown1.png";
 import crown2 from "../../assets/images/crown2.png";
 import crown3 from "../../assets/images/crown3.png";
@@ -31,6 +33,7 @@ import { endpoint } from "../../services/urls";
 import CustomCircularProgress from "../../shared/loder/CustomCircularProgress";
 import theme from "../../utils/theme";
 import Lottery from "./component/Lottery";
+import { avred1 } from "../../shared/color";
 
 function Dashboard() {
   const progressCircle = useRef(null);
@@ -81,7 +84,7 @@ function Dashboard() {
     }
   }, []);
 
- 
+
   const imageSources = [
     "https://mui.com/static/images/avatar/2.jpg",
     "https://mui.com/static/images/avatar/3.jpg",
@@ -97,10 +100,11 @@ function Dashboard() {
     <Layout>
       <CustomCircularProgress isLoading={isLoading} />
       <Swiper
+        style={{ marginTop: '16px', borderRadius: '5px', overflow: 'hidden' }}
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
-          delay: 2500,
+          delay: 3500,
           disableOnInteraction: false,
         }}
         pagination={{
@@ -109,11 +113,8 @@ function Dashboard() {
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
         onAutoplayTimeLeft={onAutoplayTimeLeft}
-        className="mySwiper"
+        className="mySwiper w95"
       >
-        {/* <SwiperSlide>
-          <Box component="img" src={banner1} sx={style.banner}></Box>
-        </SwiperSlide>
         <SwiperSlide>
           <Box component="img" src={banner2} sx={style.banner}></Box>
         </SwiperSlide>
@@ -123,15 +124,6 @@ function Dashboard() {
         <SwiperSlide>
           <Box component="img" src={banner4} sx={style.banner}></Box>
         </SwiperSlide>
-        <SwiperSlide>
-          <Box component="img" src={banner5} sx={style.banner}></Box>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Box component="img" src={banner7} sx={style.banner}></Box>
-        </SwiperSlide> */}
-        <SwiperSlide>
-          <Box component="img" src={ava} sx={style.banner}></Box>
-        </SwiperSlide>
         <div className="autoplay-progress" slot="container-end">
           <svg viewBox="0 0 48 48" ref={progressCircle}>
             <circle cx="24" cy="24" r="20"></circle>
@@ -140,30 +132,30 @@ function Dashboard() {
         </div>
       </Swiper>
       <Stack
+        className="w95"
         direction="row"
         sx={{
           alignItems: "center",
           justifyContent: "space-between",
           px: 1,
           py: 1,
-          background: "#FFFBE8",
+          background: avred1,
+          border: `1px solid ${avred1}`, mt: 2,
+          borderRadius: '3px'
         }}
       >
-        <VolumeUpIcon sx={{ color: theme.palette.primary.main, mr: 1 }} />
+        <VolumeUpIcon sx={{ color: 'white', mr: 1 }} />
         <Typography
-          variant="body1"
-          color="initial"
+          className="fp13"
           sx={{
-            fontWeight: 500,
-            fontSize: "10px",
             mr: 1,
             textAlign: "center",
-            color: theme.palette.primary.main,
+            color: 'white',
           }}
         >
           1.All recharge methods only available in RECHARGE menu on OFFICIAL
         </Typography>
-        <Typography className="!bg-red-400 !text-white !text-xs  !font-bold rounded-2xl px-2 !flex justify-center">
+        <Typography sx={{ background: '#131512' }} className="!text-white !text-xs  !font-bold rounded-2xl px-2 !flex justify-center">
           <WhatshotIcon fontSize="small" />{" "}
           <span className="my-1">Details</span>
         </Typography>
@@ -177,12 +169,12 @@ function Dashboard() {
           mt: 1,
         }}
       >
-       
-       
+
+
       </Stack>
-     
+
       {value === 1 && <Lottery />}
-     
+
       <Box sx={{ px: 2 }}>
         <Stack direction={"row"} sx={{ alignItems: "center" }}>
           <Box
@@ -233,7 +225,7 @@ function Dashboard() {
                 >
                   <p className="!flex !flex-col">
                     <span>{i?.or_m_user_id}</span>
-                    <span>{i?.or_m_name?.substring(0,5)}</span>
+                    <span>{i?.or_m_name?.substring(0, 5)}</span>
                   </p>
                 </Typography>
                 <Box sx={style.winnerbannerouter}>
@@ -418,9 +410,9 @@ function Dashboard() {
                   color="initial"
                   sx={style.winnername}
                 >
-                   <p className="!flex !flex-col">
+                  <p className="!flex !flex-col">
                     <span>{i?.or_m_user_id}</span>
-                    <span>{i?.or_m_name?.substring(0,5)}</span>
+                    <span>{i?.or_m_name?.substring(0, 5)}</span>
                   </p>
                 </Typography>
                 <Box sx={style.winnerbannerouter}>
@@ -486,7 +478,7 @@ function Dashboard() {
                 >
                   <p className="!flex !flex-col">
                     <span>{i?.or_m_user_id}</span>
-                    <span>{i?.or_m_name?.substring(0,5)}</span>
+                    <span>{i?.or_m_name?.substring(0, 5)}</span>
                   </p>
                 </Typography>
                 <Box sx={style.winnerbannerouter}>
@@ -524,7 +516,7 @@ function Dashboard() {
 
 export default Dashboard;
 const style = {
-  banner: { height: "180px !important" },
+  banner: { height: "200px !important" },
   gamecattext: {
     textAlign: "center",
     textDecoration: "none !important",

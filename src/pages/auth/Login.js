@@ -10,11 +10,9 @@ import {
   FormGroup,
   IconButton,
   InputAdornment,
-  MenuItem,
-  Select,
   Stack,
   TextField,
-  Typography,
+  Typography
 } from "@mui/material";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
@@ -23,18 +21,13 @@ import { useFormik } from "formik";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { NavLink, useNavigate } from "react-router-dom";
-import custom from "../../assets/images/customer.jpg";
-import logemailactive from "../../assets/images/logemailactive.png";
-import logphoneactive from "../../assets/images/logophoneactive.jpg";
-import logphonedeactive from "../../assets/images/logphonedeactive.png";
-import logemaildeactive from "../../assets/images/maill.jpg";
-import phoneaa from "../../assets/images/Phone.jpg";
-import password from "../../assets/images/psw.jpg";
+import logo from '../../assets/images/logo.png';
+import noise from "../../assets/images/Noise-bg.gif";
 import { storeCookies } from "../../services/apiCallings";
 import { endpoint } from "../../services/urls";
+import { avred1 } from "../../shared/color";
 import { deCryptData, enCryptData } from "../../shared/secret";
-import logo from '../../assets/images/logo.png'
-import { avblue } from "../../shared/color";
+
 
 
 function Login() {
@@ -114,7 +107,15 @@ function Login() {
     };
   }, [fk]);
   return (
-    <Container sx={{ background: avblue }}>
+    <Container sx={{
+      backgroundColor: '#111410',
+      backgroundImage: `url(${noise})`,
+      backgroundPosition: 'left top',
+      backgroundSize: 'auto',
+      backgroundRepeat: 'repeat',
+      backgroundAttachment: 'scroll',
+      minHeight: '100vh',
+    }}>
       <Box
         sx={{
           padding: 1,
@@ -129,25 +130,48 @@ function Login() {
           transform: 'rotate(5deg)',
         }} component='img' src={logo}></Box>
       </Box>
-      {/* <button className="th-btn style2">Click Me1</button>
-      <button className="th-btn style3">Click Me2</button>
-      <button className="th-btn style4">Click Me3</button> */}
-      <Box sx={{ width: "92%", margin: "auto" }}>
-        <Tabs value={value} onChange={handleChange}>
+      <Box sx={{ width: '95%', margin: 'auto' }}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          sx={{
+            '& .MuiTabs-indicator': {
+              backgroundColor: 'transparent',
+            },
+          }}
+        >
           <Tab
-            sx={{ width: "50%", color: 'white', }}
+            sx={{
+              clipPath: 'polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%)',
+              width: '50%',
+              color: 'white !important',
+              backgroundColor: value === 'one' ? avred1 : '',
+              transition: 'all 0.3s ease',
+              '&:hover': {
+                backgroundColor: avred1,
+              },
+            }}
             value="one"
             label={
-              <Box>
+              <Box className="fp15">
                 Log in with phone
               </Box>
             }
           />
           <Tab
-            sx={{ width: "50%", color: 'white' }}
+            sx={{
+              clipPath: 'polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%)',
+              width: '50%',
+              color: 'white !important',
+              backgroundColor: value === 'two' ? avred1 : '',
+              transition: 'all 0.3s ease',
+              '&:hover': {
+                backgroundColor: avred1,
+              },
+            }}
             value="two"
             label={
-              <Box>
+              <Box className="fp15">
                 Log in with email
               </Box>
             }
@@ -160,8 +184,8 @@ function Login() {
             <Stack direction="row" alignItems="center">
               <Typography
                 variant="body1"
-                color="initial"
-                sx={{ fontSize: "15px", fontWeight: "500", color: "gray" }}
+                className="fp17"
+                sx={{ color: avred1 }}
               >
                 Phone number
               </Typography>
@@ -189,9 +213,8 @@ function Login() {
             <Box mt={2}>
               <Stack direction="row" alignItems="center">
                 <Typography
-                  variant="body1"
-                  color="initial"
-                  sx={{ fontSize: "15px", fontWeight: "500", color: "gray" }}
+                  className="fp17"
+                  sx={{ color: avred1 }}
                 >
                   Password
                 </Typography>
@@ -211,7 +234,7 @@ function Login() {
                         onMouseDown={handleMouseDownPassword}
                         edge="end"
                       >
-                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                        {showPassword ? <VisibilityOff sx={{ color: avred1 }} /> : <Visibility sx={{ color: avred1 }} />}
                       </IconButton>
                     </InputAdornment>
                   }
@@ -225,10 +248,8 @@ function Login() {
             <Box>
               <Stack direction="row" alignItems="center">
                 <Typography
-                  variant="body1"
-                  color="initial"
-                  sx={{ fontSize: "15px", fontWeight: "500", color: "gray" }}
-                >
+                  className="fp17"
+                  sx={{ color: avred1 }}>
                   Mail
                 </Typography>
               </Stack>
@@ -249,10 +270,8 @@ function Login() {
             <Box mt={2}>
               <Stack direction="row" alignItems="center">
                 <Typography
-                  variant="body1"
-                  color="initial"
-                  sx={{ fontSize: "15px", fontWeight: "500", color: "gray" }}
-                >
+                  className="fp17"
+                  sx={{ color: avred1 }}>
                   Password
                 </Typography>
               </Stack>
@@ -271,7 +290,7 @@ function Login() {
                         onMouseDown={handleMouseDownPassword}
                         edge="end"
                       >
-                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                        {showPassword ? <VisibilityOff sx={{ color: avred1 }} /> : <Visibility sx={{ color: avred1 }} />}
                       </IconButton>
                     </InputAdornment>
                   }
@@ -284,6 +303,7 @@ function Login() {
           <FormGroup mt={3}>
             <FormControlLabel
               sx={{ color: 'white' }}
+              className="fp17"
               control={<Checkbox defaultChecked />}
               label="Remember password"
             />
@@ -291,26 +311,20 @@ function Login() {
         </Box>
         <Box sx={{ width: "80%", margin: "auto", mt: 3 }}>
           <Button
-            // onClick={() => fk.handleClickShowPassword()}
             onClick={() => fk.handleSubmit()}
             sx={{
-              // boxShadow: " 0px 3px #b6bad0",
-              // padding: "10px",
               width: "100%",
-              // background: "#CACCDB",
-              // color: "white",
-              // borderRadius: "20px",
-              // mb: 2,
-              // fontWeight: "700",
-              // "&:hover": { background: "#b6bad0" },
+              color: 'white !important',
+              mb: 2,
             }}
             disableElevation
-            className={`${(fk.values.email || fk.values.password || fk.values.mobile) && "!bg-red-400"} th-btn style2`}
+            className={`th-btn `}
           >
             Log in
           </Button>
           <NavLink to="/register">
             <Button
+              className={` th-btn2 `}
               sx={{
                 width: "100%",
                 borderRadius: "20px",
@@ -323,27 +337,8 @@ function Login() {
             </Button>
           </NavLink>
         </Box>
-        <Box sx={{ mt: 3 }}></Box>
-        <Box
-          sx={{ width: "80%", margin: "auto" }}
-          component={NavLink}
-          to="/CustomerService"
-        >
-          <Box
-            component="img"
-            src={custom}
-            sx={{ width: "50px", margin: "auto" }}
-          ></Box>
-          <Typography
-            variant="body1"
-            color="initial"
-            sx={{ textAlign: "center" }}
-          >
-            Customer Service
-          </Typography>
-        </Box>
       </Box>
-    </Container>
+    </Container >
   );
 }
 
@@ -355,23 +350,35 @@ const style = {
     mt: 2,
     "&>div>div>input": {
       background: "white",
-      padding: 3,
+      padding: '20px',
       borderRadius: "5px",
       boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;",
+      "&::placeholder": {
+        color: "#0C072C",
+        opacity: '0.5',
+        fontWeight: '600',
+      },
     },
     "&>div>div>fieldset ": { border: "none !important" },
     "&>div>div>input:focus": { outline: "1px solid #F18401" },
     // "sub>active>button":{background:"#eb8a1f"},
 
   },
-
-
-
   passwordfield: {
-    "&>div>input": { padding: 3 },
+    "&>div>input": {
+      background: "white",
+      padding: '20px',
+      borderRadius: "5px",
+      boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;",
+      "&::placeholder": {
+        color: "#0C072C",
+        opacity: '0.5',
+        fontWeight: '600',
+      },
+    },
     "&>div": {
       mt: 2,
-      background: "white",
+      background: "white !important",
       boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;",
       borderRadius: "5px",
     },

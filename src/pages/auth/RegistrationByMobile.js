@@ -28,6 +28,7 @@ import { endpoint } from "../../services/urls";
 import { signupSchemaValidataon } from "../../services/validation";
 import theme from "../../utils/theme";
 import CustomCircularProgress from "../../shared/loder/CustomCircularProgress";
+import { avred1 } from "../../shared/color";
 const RegistrationByMobile = () => {
   const [username, setusername] = useState("");
   const [showPassword, setShowPassword] = React.useState(false);
@@ -126,77 +127,43 @@ const RegistrationByMobile = () => {
   return (
     <>
       <Box component="form" onSubmit={fk.handleSubmit}>
-      <CustomCircularProgress isLoading={isLoading} />
+        <CustomCircularProgress isLoading={isLoading} />
         <Stack direction="row" alignItems="center">
-          <Box
-            component="img"
-            src={phoneaa}
-            sx={{ width: "25px", mr: 1 }}
-          ></Box>
           <Typography
-            variant="body1"
-            color="initial"
-            sx={{ fontSize: "15px", fontWeight: "500", color: "gray" }}
+            className="fp17"
+            sx={{ color: avred1 }}
           >
             Phone number
           </Typography>
         </Stack>
-        <Stack
-          direction="row"
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          <Box sx={{ width: "30%" }}>
-            <FormControl fullWidth sx={{ ...style.selectfield }}>
-              <Select
-                value={country}
-                onChange={handleChangesetCountry}
-                displayEmpty
-              >
-                <MenuItem value="">
-                  <em>+91 India</em>
-                </MenuItem>
-                <MenuItem value={+971}>+971 UAE </MenuItem>
-                <MenuItem value={+977}>+977 Nepal</MenuItem>
-                <MenuItem value={+92}>+92 Pakistan</MenuItem>
-              </Select>
-            </FormControl>
-          </Box>
-          <Box sx={{ width: "65%" }}>
-            <FormControl fullWidth sx={{ ...style.inputfield }}>
-              <TextField
-                id="mobile"
-                name="mobile"
-                onChange={fk.handleChange}
-                value={fk.values.mobile}
-                label=""
-                placeholder=" Enter number"
-                fullWidth
-                type="number"
-              />
-              {fk.touched.mobile && fk.errors.mobile && (
-                <div className="error">{fk.errors.mobile}</div>
-              )}
-            </FormControl>
-          </Box>
-        </Stack>
+
+        <FormControl fullWidth sx={{ ...style.inputfield }}>
+          <TextField
+            id="mobile"
+            name="mobile"
+            onChange={fk.handleChange}
+            value={fk.values.mobile}
+            label=""
+            placeholder=" Enter number"
+            fullWidth
+            type="number"
+          />
+          {fk.touched.mobile && fk.errors.mobile && (
+            <div className="error">{fk.errors.mobile}</div>
+          )}
+        </FormControl>
+
         <Box mt={2}>
           <Stack direction="row" alignItems="center">
-            <Box
-              component="img"
-              src={password}
-              sx={{ width: "25px", mr: 1 }}
-            ></Box>
             <Typography
-              variant="body1"
-              color="initial"
-              sx={{ fontSize: "15px", fontWeight: "500", color: "gray" }}
+              className="fp17"
+              sx={{ color: avred1 }}
             >
               Name
             </Typography>
           </Stack>
-          <FormControl fullWidth sx={{ ...style.passwordfield }}>
-            <FilledInput
+          <FormControl fullWidth sx={{ ...style.inputfield }}>
+            <TextField
               placeholder="Name"
               id="name"
               name="name"
@@ -211,15 +178,9 @@ const RegistrationByMobile = () => {
         </Box>
         <Box mt={2}>
           <Stack direction="row" alignItems="center">
-            <Box
-              component="img"
-              src={password}
-              sx={{ width: "25px", mr: 1 }}
-            ></Box>
             <Typography
-              variant="body1"
-              color="initial"
-              sx={{ fontSize: "15px", fontWeight: "500", color: "gray" }}
+              className="fp17"
+              sx={{ color: avred1 }}
             >
               Set password
             </Typography>
@@ -239,7 +200,7 @@ const RegistrationByMobile = () => {
                     onMouseDown={handleMouseDownPassword}
                     edge="end"
                   >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                    {showPassword ? <VisibilityOff sx={{ color: avred1 }} /> : <Visibility sx={{ color: avred1 }} />}
                   </IconButton>
                 </InputAdornment>
               }
@@ -251,15 +212,9 @@ const RegistrationByMobile = () => {
         </Box>
         <Box mt={2}>
           <Stack direction="row" alignItems="center">
-            <Box
-              component="img"
-              src={password}
-              sx={{ width: "25px", mr: 1 }}
-            ></Box>
             <Typography
-              variant="body1"
-              color="initial"
-              sx={{ fontSize: "15px", fontWeight: "500", color: "gray" }}
+              className="fp17"
+              sx={{ color: avred1 }}
             >
               Confirm password
             </Typography>
@@ -279,27 +234,21 @@ const RegistrationByMobile = () => {
                     onMouseDown={handleMouseDownPassword}
                     edge="end"
                   >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                    {showPassword ? <VisibilityOff sx={{ color: avred1 }} /> : <Visibility sx={{ color: avred1 }} />}
                   </IconButton>
                 </InputAdornment>
               }
             />
             {fk.touched.confirmed_password && fk.errors.confirmed_password && (
-              <div className="error">{fk.errors.confirmed_password}</div>
+              <div className="error err">{fk.errors.confirmed_password}</div>
             )}
           </FormControl>
         </Box>
         <Box mt={2}>
           <Stack direction="row" alignItems="center">
-            <Box
-              component="img"
-              src={invite}
-              sx={{ width: "25px", mr: 1 }}
-            ></Box>
             <Typography
-              variant="body1"
-              color="initial"
-              sx={{ fontSize: "15px", fontWeight: "500", color: "gray" }}
+              className="fp17"
+              sx={{ color: avred1 }}
             >
               Invite code
             </Typography>
@@ -320,7 +269,7 @@ const RegistrationByMobile = () => {
             ) : (
               fk.touched.invite_code &&
               fk.errors.invite_code && (
-                <div className="error">{fk.errors.invite_code}</div>
+                <div className="error err">{fk.errors.invite_code}</div>
               )
             )}
           </FormControl>
@@ -333,17 +282,15 @@ const RegistrationByMobile = () => {
             label={
               <Stack direction="row">
                 <Typography
-                  variant="body1"
-                  color="initial"
-                  sx={{ fontSize: "13px" }}
+                  className="fp13"
+                  sx={{ color: avred1 }}
                 >
                   I have read and agree{" "}
                 </Typography>
                 <NavLink to="/RiskDisclosureAgreement">
                   <Typography
-                    variant="body1"
-                    color="initial"
-                    sx={{ fontSize: "14px", color: "#EB8A1F" }}
+                    className="fp13"
+                    sx={{ fontSize: "14px", color: avred1 }}
                   >
                     【Privacy Agreement】
                   </Typography>
@@ -356,47 +303,17 @@ const RegistrationByMobile = () => {
       <Box sx={{ width: "80%", margin: "auto", mt: 3 }}>
         <Button
           onClick={() => fk.handleSubmit()}
-          sx={{
-            boxShadow: " 0px 3px #b6bad0",
-            padding: "10px",
-            width: "100%",
-            background: "#CACCDB",
-            color: "white",
-            borderRadius: "20px",
-            mb: 2,
-            fontWeight: "700",
-          }}
-          disableElevation
-          className={`${
-            !fk.values.password ||
-            !fk.values.confirmed_password ||
-            !fk.values.mobile ||
-            !fk.values.name ||
-            !fk.values.invite_code
-              ? "!bg-gray-500"
-              : "!bg-[#FC9401]"
-          }`}
+          className={`th-btn`}
+          sx={{ mb: 2, width: '100%' }}
         >
           Register
         </Button>
         <NavLink to="/">
           <Button
-            sx={{
-              width: "100%",
-              borderRadius: "20px",
-              fontSize: "13px",
-              fontWeight: "500",
-              color: "black",
-              "&>span": {
-                color: theme.palette.primary.main,
-                ml: 1,
-                fontSize: "16px",
-                fontWeight: "700",
-              },
-            }}
-            variant="outlined"
+            className={`th-btn2`}
+            sx={{ width: '100%' }}
           >
-            I have an account <span> Login</span>
+            I have an account ?  <span> Login</span>
           </Button>
         </NavLink>
       </Box>
@@ -411,20 +328,35 @@ const style = {
     mt: 2,
     "&>div>div>input": {
       background: "white",
-      padding: 3,
-      borderRadius: "10px",
+      padding: '20px',
+      borderRadius: "5px",
       boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;",
+      "&::placeholder": {
+        color: "#0C072C",
+        opacity: '0.5',
+        fontWeight: '600',
+      },
     },
     "&>div>div>fieldset ": { border: "none !important" },
     "&>div>div>input:focus": { outline: "1px solid #F18401" },
   },
   passwordfield: {
-    "&>div>input": { padding: 3 },
+    "&>div>input": {
+      background: "white",
+      padding: '20px',
+      borderRadius: "5px",
+      boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;",
+      "&::placeholder": {
+        color: "#0C072C",
+        opacity: '0.5',
+        fontWeight: '600',
+      },
+    },
     "&>div": {
       mt: 2,
-      background: "white",
+      background: "white !important",
       boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;",
-      borderRadius: "10px",
+      borderRadius: "5px",
     },
     "&>div::before": { border: "none !important" },
     "&>div::after:focus": {
@@ -432,18 +364,5 @@ const style = {
       border: "1px solid #F18401  !important",
     },
   },
-  selectfield: {
-    "&>div>div": {
-      background: "white",
-      borderRadius: "10px",
-      padding: "11px 3px",
-      borderRadius: "10px",
-    },
-    "&>div>fieldset": {
-      border: "1px solid white",
-      boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;",
-      borderRadius: "10px",
-    },
-    "&>div": { mt: 2 },
-  },
+
 };

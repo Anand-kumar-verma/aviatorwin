@@ -2,6 +2,7 @@ import Header from "./component/Header";
 import Footer from "./component/Footer";
 import { Box, Container } from "@mui/material";
 import { useEffect } from "react";
+import noise from "../../assets/images/Noise-bg.gif";
 
 function Layout(props) {
   const { header = true, footer = true, children } = props;
@@ -10,7 +11,14 @@ function Layout(props) {
   }, [])
 
   return (
-    <Container sx={{ background: "#F5F6FE" }}>
+    <Container sx={{
+      backgroundColor: '#111410',
+      backgroundImage: `url(${noise})`,
+      backgroundPosition: 'left top',
+      backgroundSize: 'auto',
+      backgroundRepeat: 'repeat',
+      backgroundAttachment: 'scroll',
+    }}>
       <Box>
         {header && <Header />}
         <Box>{children}</Box>

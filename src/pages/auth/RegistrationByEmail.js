@@ -27,6 +27,7 @@ import { signupSchemaValidataonEmail } from "../../services/validation";
 import CustomCircularProgress from "../../shared/loder/CustomCircularProgress";
 import theme from "../../utils/theme";
 import { enCryptData } from "../../shared/secret";
+import { avred1 } from "../../shared/color";
 const RegistrationByEmail = () => {
   const [showPassword, setShowPassword] = React.useState(false);
   const [username, setusername] = useState("");
@@ -117,15 +118,11 @@ const RegistrationByEmail = () => {
         <CustomCircularProgress isLoading={isLoading} />
         <Box mt={2}>
           <Stack direction="row" alignItems="center">
-            <Box
-              component="img"
-              src={logemaildeactive}
-              sx={{ width: "25px", mr: 1 }}
-            ></Box>
+
             <Typography
-              variant="body1"
-              color="initial"
-              sx={{ fontSize: "15px", fontWeight: "500", color: "gray" }}
+              className="fp17"
+
+              sx={{ color: avred1 }}
             >
               Mail
             </Typography>
@@ -148,15 +145,11 @@ const RegistrationByEmail = () => {
         </Box>
         <Box mt={2}>
           <Stack direction="row" alignItems="center">
-            <Box
-              component="img"
-              src={logemaildeactive}
-              sx={{ width: "25px", mr: 1 }}
-            ></Box>
+
             <Typography
-              variant="body1"
-              color="initial"
-              sx={{ fontSize: "15px", fontWeight: "500", color: "gray" }}
+              className="fp17"
+
+              sx={{ color: avred1 }}
             >
               Name
             </Typography>
@@ -180,15 +173,11 @@ const RegistrationByEmail = () => {
 
         <Box mt={2}>
           <Stack direction="row" alignItems="center">
-            <Box
-              component="img"
-              src={password}
-              sx={{ width: "25px", mr: 1 }}
-            ></Box>
+
             <Typography
-              variant="body1"
-              color="initial"
-              sx={{ fontSize: "15px", fontWeight: "500", color: "gray" }}
+              className="fp17"
+
+              sx={{ color: avred1 }}
             >
               Set password
             </Typography>
@@ -208,7 +197,7 @@ const RegistrationByEmail = () => {
                     onMouseDown={handleMouseDownPassword}
                     edge="end"
                   >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                    {showPassword ? <VisibilityOff sx={{ color: avred1 }} /> : <Visibility sx={{ color: avred1 }} />}
                   </IconButton>
                 </InputAdornment>
               }
@@ -220,15 +209,11 @@ const RegistrationByEmail = () => {
         </Box>
         <Box mt={2}>
           <Stack direction="row" alignItems="center">
-            <Box
-              component="img"
-              src={password}
-              sx={{ width: "25px", mr: 1 }}
-            ></Box>
+
             <Typography
-              variant="body1"
-              color="initial"
-              sx={{ fontSize: "15px", fontWeight: "500", color: "gray" }}
+              className="fp17"
+
+              sx={{ color: avred1 }}
             >
               Confirm password
             </Typography>
@@ -248,7 +233,7 @@ const RegistrationByEmail = () => {
                     onMouseDown={handleMouseDownPassword}
                     edge="end"
                   >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                    {showPassword ? <VisibilityOff sx={{ color: avred1 }} /> : <Visibility sx={{ color: avred1 }} />}
                   </IconButton>
                 </InputAdornment>
               }
@@ -260,15 +245,11 @@ const RegistrationByEmail = () => {
         </Box>
         <Box mt={2}>
           <Stack direction="row" alignItems="center">
-            <Box
-              component="img"
-              src={invite}
-              sx={{ width: "25px", mr: 1 }}
-            ></Box>
+
             <Typography
-              variant="body1"
-              color="initial"
-              sx={{ fontSize: "15px", fontWeight: "500", color: "gray" }}
+              className="fp17"
+
+              sx={{ color: avred1 }}
             >
               Invite code
             </Typography>
@@ -302,17 +283,16 @@ const RegistrationByEmail = () => {
             label={
               <Stack direction="row">
                 <Typography
-                  variant="body1"
-                  color="initial"
-                  sx={{ fontSize: "13px" }}
+                  className="fp13"
+                  sx={{ color: avred1 }}
                 >
                   I have read and agree{" "}
                 </Typography>
                 <NavLink to="/RiskDisclosureAgreement">
                   <Typography
-                    variant="body1"
-                    color="initial"
-                    sx={{ fontSize: "14px", color: "#EB8A1F" }}
+                    className="fp13"
+
+                    sx={{ color: avred1 }}
                   >
                     【Privacy Agreement】
                   </Typography>
@@ -325,45 +305,15 @@ const RegistrationByEmail = () => {
       <Box sx={{ width: "80%", margin: "auto", mt: 3 }}>
         <Button
           onClick={() => fk.handleSubmit()}
-          sx={{
-            boxShadow: " 0px 3px #b6bad0",
-            padding: "10px",
-            width: "100%",
-            background: "#CACCDB",
-            color: "white",
-            borderRadius: "20px",
-            mb: 2,
-            fontWeight: "700",
-          }}
-          disableElevation
-          className={`${
-            !fk.values.password ||
-            !fk.values.confirmed_password ||
-            !fk.values.email ||
-            !fk.values.name ||
-            !fk.values.invite_code
-              ? "!bg-gray-500"
-              : "!bg-[#FC9401]"
-          }`}
+          className="th-btn"
+          sx={{ width: '100%', mb: 2, }}
         >
           Register
         </Button>
         <NavLink to="/">
           <Button
-            sx={{
-              width: "100%",
-              borderRadius: "20px",
-              fontSize: "13px",
-              fontWeight: "500",
-              color: "black",
-              "&>span": {
-                color: theme.palette.primary.main,
-                ml: 1,
-                fontSize: "16px",
-                fontWeight: "700",
-              },
-            }}
-            variant="outlined"
+            className="th-btn2"
+            sx={{ width: '100%' }}
           >
             I have an account <span> Login</span>
           </Button>
@@ -380,20 +330,37 @@ const style = {
     mt: 2,
     "&>div>div>input": {
       background: "white",
-      padding: 3,
-      borderRadius: "10px",
+      padding: '20px',
+      borderRadius: "5px",
       boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;",
+      "&::placeholder": {
+        color: "#0C072C",
+        opacity: '0.5',
+        fontWeight: '600',
+      },
     },
     "&>div>div>fieldset ": { border: "none !important" },
     "&>div>div>input:focus": { outline: "1px solid #F18401" },
+    // "sub>active>button":{background:"#eb8a1f"},
+
   },
   passwordfield: {
-    "&>div>input": { padding: 3 },
+    "&>div>input": {
+      background: "white",
+      padding: '20px',
+      borderRadius: "5px",
+      boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;",
+      "&::placeholder": {
+        color: "#0C072C",
+        opacity: '0.5',
+        fontWeight: '600',
+      },
+    },
     "&>div": {
       mt: 2,
-      background: "white",
+      background: "white !important",
       boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;",
-      borderRadius: "10px",
+      borderRadius: "5px",
     },
     "&>div::before": { border: "none !important" },
     "&>div::after:focus": {
@@ -401,18 +368,5 @@ const style = {
       border: "1px solid #F18401  !important",
     },
   },
-  selectfield: {
-    "&>div>div": {
-      background: "white",
-      borderRadius: "10px",
-      padding: "11px 3px",
-      borderRadius: "10px",
-    },
-    "&>div>fieldset": {
-      border: "1px solid white",
-      boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;",
-      borderRadius: "10px",
-    },
-    "&>div": { mt: 2 },
-  },
+
 };

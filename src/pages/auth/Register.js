@@ -16,6 +16,9 @@ import logphonedeactive from "../../assets/images/Phone.jpg";
 import { signupSchemaValidataon } from "../../services/validation";
 import RegistrationByEmail from "./RegistrationByEmail";
 import RegistrationByMobile from "./RegistrationByMobile";
+import logo from '../../assets/images/logo.png'
+import noise from "../../assets/images/Noise-bg.gif";
+import { avred1 } from "../../shared/color";
 
 function Login() {
   const [value, setValue] = useState("one");
@@ -39,92 +42,73 @@ function Login() {
   });
 
   return (
-    <Container>
+    <Container sx={{
+      backgroundColor: '#111410',
+      backgroundImage: `url(${noise})`,
+      backgroundPosition: 'left top',
+      backgroundSize: 'auto',
+      backgroundRepeat: 'repeat',
+      backgroundAttachment: 'scroll',
+      minHeight: '100vh',
+    }}>
+
       <Box
-      className="bg-[#E4063A]"
         sx={{
           padding: 1,
-          padding: "16px 16px 50px 16px",
+          px: 2,
           "&>p": { color: "white" },
         }}
       >
-        <NavLink to="/">
-          <Box component="img" src={backbtn} width={25}></Box>
-        </NavLink>
-        <Typography
-          variant="body1"
-          color="initial"
-          sx={{ fontWeight: "600", mt: 2, mb: 1, fontSize: "14px" }}
-        >
-          Register
-        </Typography>
-        <Typography
-          variant="body1"
-          color="initial"
-          sx={{ fontWeight: "400", fontSize: "12px" }}
-        >
-          Please register by phone number or emails
-        </Typography>
+        <Box sx={{
+          width: '200px',
+          margin: 'auto',
+          padding: '21px 0px',
+          transform: 'rotate(5deg)',
+        }} component='img' src={logo}></Box>
       </Box>
       <Box sx={{ width: "92%", margin: "auto" }}>
-        <Tabs value={value} onChange={handleChange}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          sx={{
+            '& .MuiTabs-indicator': {
+              backgroundColor: 'transparent',
+            },
+          }}
+        >
           <Tab
-            sx={{ width: "50%" }}
+            sx={{
+              clipPath: 'polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%)',
+              width: '50%',
+              color: 'white !important',
+              backgroundColor: value === 'one' ? avred1 : '',
+              transition: 'all 0.3s ease',
+              '&:hover': {
+                backgroundColor: avred1,
+              },
+            }}
             value="one"
             label={
-              <Box>
-                {value === "one" ? (
-                  <Box
-                    component="img"
-                    src={logphoneactive}
-                    sx={{
-                      margin: "auto",
-                      width: "25px",
-                      mb: "10px !important",
-                    }}
-                  ></Box>
-                ) : (
-                  <Box
-                    component="img"
-                    src={logphonedeactive}
-                    sx={{
-                      margin: "auto",
-                      width: "25px",
-                      mb: "10px !important",
-                    }}
-                  ></Box>
-                )}
+              <Box className="fp15">
                 Register your phone
               </Box>
             }
           />
           <Tab
-            sx={{ width: "50%" }}
+            sx={{
+              clipPath: 'polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%)',
+              width: '50%',
+              color: 'white !important',
+              backgroundColor: value === 'two' ? avred1 : '',
+              transition: 'all 0.3s ease',
+              '&:hover': {
+                backgroundColor: avred1,
+              },
+            }}
             value="two"
             label={
-              <Box>
-                {value === "two" ? (
-                  <Box
-                    component="img"
-                    src={logemaildeactive}
-                    sx={{
-                      margin: "auto",
-                      width: "25px",
-                      mb: "10px !important",
-                    }}
-                  ></Box>
-                ) : (
-                  <Box
-                    component="img"
-                    src={logemailactive}
-                    sx={{
-                      margin: "auto",
-                      width: "25px",
-                      mb: "10px !important",
-                    }}
-                  ></Box>
-                )}
-                email registration
+              <Box className="fp15">
+                Email registration
               </Box>
             }
           />

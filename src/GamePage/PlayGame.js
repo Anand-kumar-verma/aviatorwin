@@ -7,10 +7,10 @@ import { CgDetailsMore } from "react-icons/cg";
 import { useQuery, useQueryClient } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
-import aviatorimage from "../assets/aviatorimage.png";
-import crashmusic from "../assets/crashmusic.mp3";
-import plane1 from "../assets/front-aviator-image.svg";
-import howtoplay from "../assets/howtoplay.PNG";
+import aviatorimage from "../assets/images/aviatorimage.png";
+import crashmusic from "../assets/images/crashmusic.mp3";
+import plane1 from "../assets/images/front-aviator-image.svg";
+import howtoplay from "../assets/images/howtoplay.PNG";
 import { just_start_after_waitingFun } from "../redux/slices/counterSlice";
 import AirPlane from "./AirPlane";
 import AllBets from "./AllBets";
@@ -291,7 +291,7 @@ const PlayGame = () => {
                       ? 'text-purple-500'
                       : 'text-red-500'}
                       rounded-full px-2 text-[10px] overscroll-auto scroll-smooth `}
-                    >
+              >
                 {Number(i?.multiplier)?.toFixed(2)} X
               </p>
 
