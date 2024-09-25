@@ -191,8 +191,6 @@ button {
     left: auto;
     z-index: 50000;
     max-width: 400px;
-    padding: 26px 10px;
-    height: 70px;
     width: 100%;
 }
 
@@ -460,7 +458,7 @@ button {
 }
 
 .gametableactive {
-    background: linear-gradient(180deg, #FF9901 0%, #E57201 100%) !important;
+    background: #E4063A !important;
     border-radius: 10px;
     color: white !important;
     font-size: 12px !important;
@@ -713,6 +711,68 @@ button {
 
 .err .css-16n1ayq-MuiFormControl-root>div {
     background-color: transparent !important;
+}
+
+.w95 {
+    width: 95% !important;
+    margin-left: 2.5% !important;
+}
+
+
+.btnplay {
+    outline: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    background: #E4063A !important;
+    min-width: 200px !important;
+    border: 0 !important;
+    border-radius: 0px 0px 5px 5px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .1) !important;
+    box-sizing: border-box !important;
+    padding: 10px 20px !important;
+    color: #fff !important;
+    font-size: 16px !important;
+    font-weight: 800 !important;
+    letter-spacing: 1.2px !important;
+    text-transform: uppercase !important;
+    overflow: hidden !important;
+    cursor: pointer !important;
+    width: 100% !important;
+}
+
+.btnplay:hover {
+    opacity: .95;
+}
+
+.btnplay .animation {
+    border-radius: 100%;
+    animation: ripple 0.6s linear infinite;
+}
+
+@keyframes ripple {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.1), 0 0 0 20px rgba(255, 255, 255, 0.1), 0 0 0 40px rgba(255, 255, 255, 0.1), 0 0 0 60px rgba(255, 255, 255, 0.1);
+    }
+
+    100% {
+        box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.1), 0 0 0 40px rgba(255, 255, 255, 0.1), 0 0 0 60px rgba(255, 255, 255, 0.1), 0 0 0 80px rgba(255, 255, 255, 0);
+    }
+}
+
+.fca {
+    display: flex;
+    align-items: start;
+    justify-content: space-around;
+    width: 100% !important;
+}
+
+.w25 {
+    width: 30% !important;
+}
+
+.w20 {
+    width: 20% !important;
 }
 
 .w95 {

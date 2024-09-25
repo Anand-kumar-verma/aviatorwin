@@ -33,6 +33,7 @@ import axios from "axios";
 import { endpoint } from "../../services/urls";
 import toast from "react-hot-toast";
 import { deCryptData } from "../../shared/secret";
+import { avred1 } from "../../shared/color";
 
 export default function Banks() {
   const user_id = deCryptData(localStorage.getItem("user_id"));
@@ -41,28 +42,28 @@ export default function Banks() {
   const tableRef = React.useRef(null);
   const client = useQueryClient()
   const [openDialogBox, setOpenDialogBox] = React.useState(false);
- 
+
   const { isLoading, data: game_history } = useQuery(
     ["bank_details"],
     () => BankDetailsFUnction(),
-      {
+    {
       refetchOnMount: false,
       refetchOnReconnect: false,
-      retry:false,
-      retryOnMount:false,
-      refetchOnWindowFocus:false
+      retry: false,
+      retryOnMount: false,
+      refetchOnWindowFocus: false
     }
   );
-  
+
   const { isLoading: bank_list, data: bankList } = useQuery(
     ["bank_list"],
     () => bankListFuncton(),
-      {
+    {
       refetchOnMount: false,
       refetchOnReconnect: false,
-      retry:false,
-      retryOnMount:false,
-      refetchOnWindowFocus:false
+      retry: false,
+      retryOnMount: false,
+      refetchOnWindowFocus: false
     }
   );
 
@@ -94,7 +95,7 @@ export default function Banks() {
   console.log(visibleRows);
 
 
-  
+
   const initialValue = {
     bank_name: openDialogBox,
     holder:
@@ -106,7 +107,7 @@ export default function Banks() {
       visibleRows?.find((i) => i?.regid === openDialogBox)?.account_number ||
       "",
   };
- 
+
   const fk = useFormik({
     initialValues: initialValue,
     enableReinitialize: true,
@@ -117,9 +118,9 @@ export default function Banks() {
         txtbank: fk.values.bank_name,
         txtholdername: fk.values.holder,
         txtifscnew: capitalizedIFSC,
-         txtacno: fk.values.account,
+        txtacno: fk.values.account,
       };
-      
+
       if (
         !reqBody.user_id ||
         !reqBody.txtacno ||
@@ -131,7 +132,7 @@ export default function Banks() {
       updateBankDetails(reqBody);
     },
   });
- 
+
   async function updateBankDetails(reqBody) {
     try {
       const res = await axios.post(endpoint?.update_bank_details, reqBody);
@@ -214,7 +215,7 @@ export default function Banks() {
             <Table
               id="my-table"
               ref={tableRef}
-              sx={{ maxWidth: 400 }}
+              sx={{ maxWidth: '100%' }}
               aria-label="simple table"
             >
               <TableHead
@@ -229,22 +230,22 @@ export default function Banks() {
                 }}
               >
                 <TableRow>
-                  <TableCell className="!text-sm !text-center !pl-[2px] !pr-0 border-2 border-r  border-white">
+                  <TableCell className="!text-sm !text-center !pl-[2px] !pr-0 border-2 border-r  border-white" sx={{ width: '100px', }}>
                     S.No.
                   </TableCell>
-                  <TableCell className="!text-sm !text-center !pr-0 !pl-1 border-2 border-r border-white">
+                  <TableCell className="!text-sm !text-center !pr-0 !pl-1 border-2 border-r border-white" sx={{ width: '100px', }}>
                     Action
                   </TableCell>
-                  <TableCell className="!text-sm !text-center !pr-0 !pl-1 border-2 border-r border-white">
+                  <TableCell className="!text-sm !text-center !pr-0 !pl-1 border-2 border-r border-white" sx={{ width: '100px', }}>
                     Bank
                   </TableCell>
-                  <TableCell className="!text-sm !text-center !pr-0 !pl-1 border-2 border-r border-white">
+                  <TableCell className="!text-sm !text-center !pr-0 !pl-1 border-2 border-r border-white" sx={{ width: '100px', }}>
                     Holder
                   </TableCell>
-                  <TableCell className="!text-sm !text-center !pr-0 !pl-1 border-2 border-r border-white">
+                  <TableCell className="!text-sm !text-center !pr-0 !pl-1 border-2 border-r border-white" sx={{ width: '100px', }}>
                     IFSC
                   </TableCell>
-                  <TableCell className="!text-sm !text-center !pr-0 !pl-1 border-2 border-r border-white">
+                  <TableCell className="!text-sm !text-center !pr-0 !pl-1 border-2 border-r border-white" sx={{ width: '100px', }}>
                     Acc Number
                   </TableCell>
                 </TableRow>
@@ -258,31 +259,31 @@ export default function Banks() {
                 {visibleRows?.map((i, index) => {
                   return (
                     <TableRow key={index} className="!w-[95%]">
-                      <TableCell className="!text-black !pl-[2px] !pr-2 !text-center !border-2 !border-r !border-[#E4063A]">
+                      <TableCell className="!text-white !pl-[2px] !pr-2 !text-center !border-2 !border-r !border-[#E4063A]">
                         {index + 1}
                       </TableCell>
-                      <TableCell className="!text-black !pr-2 !pl-1 !text-center border-2 !border-r !border-[#E4063A]">
+                      <TableCell className="!text-white !pr-2 !pl-1 !text-center border-2 !border-r !border-[#E4063A]">
                         <Button
                           className="!bg-[#FD565C] !py-0 !text-white"
                           onClick={() => {
                             Number(i?.bank_update) === 0
-                          ? setOpenDialogBox(i?.regid)
-                          : toast("You have already changed your bank account")
-                            }}
+                              ? setOpenDialogBox(i?.regid)
+                              : toast("You have already changed your bank account")
+                          }}
                         >
                           Update
                         </Button>
                       </TableCell>
-                      <TableCell className="!text-black !pr-2 !pl-1 !text-center border-2 !border-r !border-[#E4063A]">
+                      <TableCell className="!text-white !pr-2 !pl-1 !text-center border-2 !border-r !border-[#E4063A]">
                         {i?.Bankname}
                       </TableCell>
-                      <TableCell className="!text-black !pr-2 !pl-1 !text-center border-2 !border-r !border-[#E4063A]">
+                      <TableCell className="!text-white !pr-2 !pl-1 !text-center border-2 !border-r !border-[#E4063A]">
                         {i?.Associate_Name}
                       </TableCell>
-                      <TableCell className="!text-black !pr-2 !pl-1 !text-center border-2 !border-r !border-[#E4063A]">
+                      <TableCell className="!text-white !pr-2 !pl-1 !text-center border-2 !border-r !border-[#E4063A]">
                         {i?.ifsc_code}
                       </TableCell>
-                      <TableCell className="!text-black !pr-2 !pl-1 !text-center border-2 !border-r !border-[#E4063A]">
+                      <TableCell className="!text-white !pr-2 !pl-1 !text-center border-2 !border-r !border-[#E4063A]">
                         {i?.account_number}
                       </TableCell>
                     </TableRow>
@@ -294,7 +295,7 @@ export default function Banks() {
           <Box sx={{ background: "white", mt: 3 }}>
             <Stack spacing={2}>
               <TablePagination
-                sx={{ background: "#FBA343", color: "white" }}
+                sx={{ background: avred1, color: "white" }}
                 rowsPerPageOptions={[10, 15, 20]}
                 component="div"
                 count={game_history_data?.length}

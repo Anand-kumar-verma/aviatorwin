@@ -345,8 +345,8 @@ const style = {
 
   },
   passwordfield: {
+    "&>div>": { background: "white", },
     "&>div>input": {
-      background: "white",
       padding: '20px',
       borderRadius: "5px",
       boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;",

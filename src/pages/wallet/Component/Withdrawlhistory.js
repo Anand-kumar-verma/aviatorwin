@@ -22,6 +22,8 @@ import {
 } from "../../../services/apiCallings";
 import CustomCircularProgress from "../../../shared/loder/CustomCircularProgress";
 import theme from "../../../utils/theme";
+import Layout from "../../../component/layout/Layout";
+import { avred1 } from "../../../shared/color";
 
 function Withdrawlhistory() {
   const [isAllValue, setIsAllValue] = useState(false);
@@ -34,9 +36,9 @@ function Withdrawlhistory() {
     {
       refetchOnMount: false,
       refetchOnReconnect: false,
-      retry:false,
-      retryOnMount:false,
-      refetchOnWindowFocus:false
+      retry: false,
+      retryOnMount: false,
+      refetchOnWindowFocus: false
     }
   );
 
@@ -56,82 +58,83 @@ function Withdrawlhistory() {
   }, [isAllValue, res]);
 
   return (
-    <Container sx={{ background: "#F7F8FF" }}>
-      <Box
-        sx={{
-          background:
-            "linear-gradient(90deg, rgb(255, 153, 1) 0%, rgb(230, 115, 1) 100%)",
-          padding: 1,
-        }}
-      >
-        <Stack
-          direction="row"
+    <Layout header={false}>
+      <Container sx={{}}>
+        <Box
           sx={{
-            alignItems: "end",
-            justifyContent: "space-between",
-            position: "relative",
+            background:
+              avred1,
+            padding: 1,
           }}
         >
-          <NavLink onClick={goBack}>
-            <Box component="img" src={backbtn} width={25}></Box>
-          </NavLink>
-          <Box sx={{ position: "absolute", left: "30%", top: "10%" }}>
-            <Typography
-              variant="body1"
-              sx={{ color: "white", fontSize: "16px", fontWeight: "600" }}
+          <Stack
+            direction="row"
+            sx={{
+              alignItems: "end",
+              justifyContent: "space-between",
+              position: "relative",
+            }}
+          >
+            <NavLink onClick={goBack}>
+              <Box component="img" src={backbtn} width={25}></Box>
+            </NavLink>
+            <Box sx={{ position: "absolute", left: "30%", top: "10%" }}>
+              <Typography
+                variant="body1"
+                sx={{ color: "white", fontSize: "16px", fontWeight: "600" }}
+              >
+                Withdrawal history
+              </Typography>
+            </Box>
+            <NavLink></NavLink>
+          </Stack>
+        </Box>
+        <Box sx={{ padding: 1 }}>
+          <Stack direction="row" justifyContent="space-between" mt={2}>
+            <Button
+              className={
+                value === 1 ? " gametableactive gametable" : " gametable"
+              }
+              onClick={() => handleChange(1)}
             >
-              Withdrawal history
-            </Typography>
-          </Box>
-          <NavLink></NavLink>
-        </Stack>
-      </Box>
-      <Box sx={{ padding: 1 }}>
-        <Stack direction="row" justifyContent="space-between" mt={2}>
-          <Button
-            className={
-              value === 1 ? " gametableactive gametable" : " gametable"
-            }
-            onClick={() => handleChange(1)}
-          >
-            {value === 1 ? (
-              <Box component="img" src={allactive} width={20} mr={1}></Box>
-            ) : (
-              <Box component="img" src={allinactive} width={20} mr={1}></Box>
-            )}
-            All
-          </Button>
-          <Button
-            className={
-              value === 2 ? " gametableactive gametable" : " gametable"
-            }
-            onClick={() => handleChange(2)}
-          >
-            {value === 2 ? (
-              <Box
-                component="img"
-                src={bankcardinactive}
-                width={20}
-                mr={1}
-              ></Box>
-            ) : (
-              <Box component="img" src={bankcardactive} width={20} mr={1}></Box>
-            )}
-            BANK CARD
-          </Button>
-          <Button
-            className={
-              value === 3 ? " gametableactive gametable" : " gametable"
-            }
-            onClick={() => handleChange(3)}
-          >
-            <Box component="img" src={trx} width={20} mr={1}></Box>
-            USDT 0
-          </Button>
-        </Stack>
-      </Box>
-      <CustomCircularProgress isLoading={isLoading} />
-      {/* <Stack sx={{ padding: 1 }}>
+              {value === 1 ? (
+                <Box component="img" src={allactive} width={20} mr={1}></Box>
+              ) : (
+                <Box component="img" src={allinactive} width={20} mr={1}></Box>
+              )}
+              All
+            </Button>
+            <Button
+              className={
+                value === 2 ? " gametableactive gametable" : " gametable"
+              }
+              onClick={() => handleChange(2)}
+            >
+              {value === 2 ? (
+                <Box
+                  component="img"
+                  src={bankcardinactive}
+                  width={20}
+                  mr={1}
+                ></Box>
+              ) : (
+                <Box component="img" src={bankcardactive} width={20} mr={1}></Box>
+              )}
+              BANK CARD
+            </Button>
+            <Button
+              className={
+                value === 3 ? " gametableactive gametable" : " gametable"
+              }
+              onClick={() => handleChange(3)}
+            >
+              <Box component="img" src={trx} width={20} mr={1}></Box>
+              USDT 0
+            </Button>
+          </Stack>
+        </Box>
+        <CustomCircularProgress isLoading={isLoading} />
+        {/* <Stack sx={{ padding: 1 }}>
         <Box sx={{ width: "100%" }}>
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">All</InputLabel>
@@ -148,131 +151,47 @@ function Withdrawlhistory() {
         </Box>
         <Box sx={{ width: "100%", mt: 1 }}></Box>
       </Stack> */}
-      {visibleData?.map((i, index) => {
-        return (
-          <Box
-            key={index}
-            sx={{
-              mb: 2,
-              padding: "10px",
-              borderRadius: "10px",
-              background: "#fff",
-              width: "92%",
-              margin: "auto",
-              mt: 2,
-            }}
-          >
-            <Stack
-              direction="row"
+        {visibleData?.map((i, index) => {
+          return (
+            <Box
+              key={index}
               sx={{
-                paddingBottom: "10px",
-                alignItems: "center",
-                justifyContent: "space-between",
-                borderBottom: "1px solid #efefef",
+                mb: 2,
+                padding: "10px",
+                borderRadius: "10px",
+                background: "#fff",
+                width: "92%",
+                margin: "auto",
+                mt: 2,
               }}
             >
-          <Box>
-                <Typography
-                 className="!bg-red-400 !text-white rounded px-2 py-1 !flex justify-center"
-                >
-                  Withdrawl
-                </Typography>
-              </Box>
-              <Box
+              <Stack
+                direction="row"
                 sx={{
-                  color: "#888",
-                  textTransform: "capitalize",
-                  fontSize: "14px",
-                  fontWeight: "600",
+                  paddingBottom: "10px",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  borderBottom: "1px solid #efefef",
                 }}
               >
-                {i?.call_back_status}
-              </Box>
-            </Stack>
-            <Stack
-              direction="row"
-              sx={{
-                alignItems: "center",
-                justifyContent: "space-between",
-                "&>p:nth-child(1)": {
-                  color: "#888",
-                  fontSize: "13px",
-                  fontWeight: "600",
-                  py: 1,
-                },
-                "&>p:nth-child(2)": {
-                  color: theme.palette.primary.main,
-                  fontSize: "13px",
-                  fontWeight: "600",
-                  py: 1,
-                },
-              }}
-            >
-              <Typography variant="body1" color="initial">
-                Balance
-              </Typography>
-              <Typography variant="body1">₹ {i?.amount}</Typography>
-            </Stack>
-            <Stack
-              direction="row"
-              sx={{
-                alignItems: "center",
-                justifyContent: "space-between",
-                "&>p": {
-                  color: "#888",
-                  fontSize: "13px",
-                  fontWeight: "600",
-                  py: 1,
-                },
-              }}
-            >
-              <Typography variant="body1" color="initial">
-                Type
-              </Typography>
-              <Typography variant="body1" color="initial">
-                {i?.withdrawal_type}
-              </Typography>
-            </Stack>
-            <Stack
-              direction="row"
-              sx={{
-                alignItems: "center",
-                justifyContent: "space-between",
-                "&>p": {
-                  color: "#888",
-                  fontSize: "13px",
-                  fontWeight: "600",
-                  py: 1,
-                },
-              }}
-            >
-              <Typography variant="body1" color="initial">
-                Time
-              </Typography>
-              <Typography
-                variant="body1"
-                color="initial"
-                className="!text-green-500"
-              >
-                {moment(i?.response_date)?.format("DD-MM-YYYY HH:mm:ss")}
-              </Typography>
-            </Stack>
-            <Stack
-              direction="row"
-              sx={{
-                alignItems: "center",
-                justifyContent: "space-between",
-                "&>p": {
-                  color: "#888",
-                  fontSize: "13px",
-                  fontWeight: "600",
-                  py: 1,
-                },
-              }}
-            >
-              <Typography variant="body1" color="initial">
-                Order number
-              </Typography>
+                <Box>
+                  <Typography
+                    className="!bg-red-400 !text-white rounded px-2 py-1 !flex justify-center"
+                  >
+                    Withdrawl
+                  </Typography>
+                </Box>
+                <Box
+                  sx={{
+                    color: "#888",
+                    textTransform: "capitalize",
+                    fontSize: "14px",
+                    fontWeight: "600",
+                  }}
+                >
+                  {i?.call_back_status}
+                </Box>
+              </Stack>
               <Stack
                 direction="row"
                 sx={{
@@ -288,31 +207,117 @@ function Withdrawlhistory() {
                     color: theme.palette.primary.main,
                     fontSize: "13px",
                     fontWeight: "600",
+                    py: 1,
                   },
                 }}
               >
                 <Typography variant="body1" color="initial">
-                  {i?.transaction_no}
+                  Balance
                 </Typography>
-                <IconButton sx={{ padding: 0 }}>
-                  <ContentCopyIcon
-                    sx={{ color: "#888", width: "15px", ml: 1 }}
-                  />
-                </IconButton>
+                <Typography variant="body1">₹ {i?.amount}</Typography>
               </Stack>
-            </Stack>
-          </Box>
-        );
-      })}
+              <Stack
+                direction="row"
+                sx={{
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  "&>p": {
+                    color: "#888",
+                    fontSize: "13px",
+                    fontWeight: "600",
+                    py: 1,
+                  },
+                }}
+              >
+                <Typography variant="body1" color="initial">
+                  Type
+                </Typography>
+                <Typography variant="body1" color="initial">
+                  {i?.withdrawal_type}
+                </Typography>
+              </Stack>
+              <Stack
+                direction="row"
+                sx={{
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  "&>p": {
+                    color: "#888",
+                    fontSize: "13px",
+                    fontWeight: "600",
+                    py: 1,
+                  },
+                }}
+              >
+                <Typography variant="body1" color="initial">
+                  Time
+                </Typography>
+                <Typography
+                  variant="body1"
+                  color="initial"
+                  className="!text-green-500"
+                >
+                  {moment(i?.response_date)?.format("DD-MM-YYYY HH:mm:ss")}
+                </Typography>
+              </Stack>
+              <Stack
+                direction="row"
+                sx={{
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  "&>p": {
+                    color: "#888",
+                    fontSize: "13px",
+                    fontWeight: "600",
+                    py: 1,
+                  },
+                }}
+              >
+                <Typography variant="body1" color="initial">
+                  Order number
+                </Typography>
+                <Stack
+                  direction="row"
+                  sx={{
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    "&>p:nth-child(1)": {
+                      color: "#888",
+                      fontSize: "13px",
+                      fontWeight: "600",
+                      py: 1,
+                    },
+                    "&>p:nth-child(2)": {
+                      color: theme.palette.primary.main,
+                      fontSize: "13px",
+                      fontWeight: "600",
+                    },
+                  }}
+                >
+                  <Typography variant="body1" color="initial">
+                    {i?.transaction_no}
+                  </Typography>
+                  <IconButton sx={{ padding: 0 }}>
+                    <ContentCopyIcon
+                      sx={{ color: "#888", width: "15px", ml: 1 }}
+                    />
+                  </IconButton>
+                </Stack>
+              </Stack>
+            </Box>
+          );
+        })}
 
-      <Button
-        sx={style.paytmbtntwo}
-        variant="outlined"
-        onClick={() => setIsAllValue(!isAllValue)}
-      >
-        {isAllValue ? "Show Less" : " All history"}
-      </Button>
-    </Container>
+        <Button
+          sx={style.paytmbtntwo}
+          variant="outlined"
+          onClick={() => setIsAllValue(!isAllValue)}
+          className={`th-btn `}
+        >
+          {isAllValue ? "Show Less" : " All history"}
+        </Button>
+      </Container>
+    </Layout>
   );
 }
 export default Withdrawlhistory;

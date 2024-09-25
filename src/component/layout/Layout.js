@@ -18,6 +18,7 @@ function Layout(props) {
       backgroundSize: 'auto',
       backgroundRepeat: 'repeat',
       backgroundAttachment: 'scroll',
+      minHeight: '100vh',
     }}>
       <Box>
         {header && <Header />}

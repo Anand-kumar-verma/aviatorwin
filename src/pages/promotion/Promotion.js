@@ -22,30 +22,33 @@ import { front_end_domain } from "../../services/urls";
 import CustomCircularProgress from "../../shared/loder/CustomCircularProgress";
 import theme from "../../utils/theme";
 import { deCryptData } from "../../shared/secret";
+import { avred1 } from "../../shared/color";
 
 function Promotion() {
-  const { data } = useQuery(["get_info"], () => Promotionfunction(),  {
+  const { data } = useQuery(["get_info"], () => Promotionfunction(), {
     refetchOnMount: false,
     refetchOnReconnect: false,
-    retry:false,
-    retryOnMount:false,
-    refetchOnWindowFocus:false
+    retry: false,
+    retryOnMount: false,
+    refetchOnWindowFocus: false
   });
   const or_m_user_type = deCryptData(localStorage.getItem("or_m_user_type"));
   const prim = data?.data?.earning || [];
 
-  const { isLoading, data: count } = useQuery(
-    ["team_count"],
-    () => TeamsubFunction(),
-    {
-      refetchOnMount: false,
-      refetchOnReconnect: false,
-      retry:false,
-      retryOnMount:false,
-      refetchOnWindowFocus:false
-    }
-  );
-  const Counting = count?.data?.earning || [];
+  // const { isLoading, data: count } = useQuery(
+  //   ["team_count"],
+  //   () => TeamsubFunction(),
+  //   {
+  //     refetchOnMount: false,
+  //     refetchOnReconnect: false,
+  //     retry: false,
+  //     retryOnMount: false,
+  //     refetchOnWindowFocus: false
+  //   }
+  // );
+  // const Counting = count?.data?.earning || [];
+  const Counting = [];
+
 
   const { isLoading: profileLoding, data: user } = useQuery(
     ["profile"],
@@ -53,9 +56,9 @@ function Promotion() {
     {
       refetchOnMount: false,
       refetchOnReconnect: false,
-      retry:false,
-      retryOnMount:false,
-      refetchOnWindowFocus:false
+      retry: false,
+      retryOnMount: false,
+      refetchOnWindowFocus: false
     }
   );
   const profile = user?.data?.earning || [];
@@ -71,254 +74,241 @@ function Promotion() {
     if (!checkTokenValidity()) {
       localStorage.clear();
       sessionStorage.clear();
-      window.location.href = "/"; // Redirect to login page
+      window.location.href = "/";
     }
   }, []);
   return (
+
     <Layout header={false}>
-      <Container>
-        <CustomCircularProgress isLoading={isLoading || profileLoding} />
-        <Box sx={style.header}>
-          <Typography variant="body1" color="initial"></Typography>
-          <Typography variant="body1" color="initial" className="!text-white">
-            Agency
+      {/* <CustomCircularProgress isLoading={isLoading || profileLoding} /> */}
+      <Box sx={style.header}>
+        <Typography variant="body1" color="initial"></Typography>
+        <Typography variant="body1" color="initial" className="!text-white">
+          Promotion        </Typography>
+        <Box component={NavLink} to="/promotion/Subordinate/"></Box>
+      </Box>
+      <Box sx={style.commitionboxOuter}>
+        <Typography
+          variant="body1"
+          color="initial"
+          className="!text-white !text-sm !py-2"
+          sx={{ textAlign: 'center', mt: 1, fontWeight: '600', fontSize: '15px' }}
+        >
+          User ID :{profile?.rec?.Login_Id}
+        </Typography>
+        {profile?.rec?.Club !== 0 && (
+          <Typography
+            variant="body1"
+            color="initial"
+            sx={{ textAlign: 'center' }}
+            className="!text-white"
+          >
+            Rank : {showRank(profilerec?.Club)}
           </Typography>
-          <Box component={NavLink} to="/promotion/Subordinate/"></Box>
-        </Box>
-        <Box sx={style.commitionboxOuter}>
-          <Box
+        )}
+        <Box sx={style.subcordinateBox}>
+          <Stack
+            direction="row"
             sx={{
               width: "92%",
               margin: "auto",
-              background: theme.palette.primary.main,
-              mt: 2,
-              borderRadius: "10px",
-              pb: 3,
             }}
           >
-            <Box sx={style.commitionbox}>
-              <Typography
-                variant="body1"
-                color="initial"
-                className="!text-white !text-sm !py-2"
-              >
-                User ID :{profile?.rec?.Login_Id}
+            <Box sx={style.subordinatesleft}>
+              <EmojiPeopleOutlinedIcon />
+              <Typography variant="body1" color="initial">
+                {" "}
+                Direct subordinates
               </Typography>
-              {profile?.rec?.Club !== 0 && (
+            </Box>
+            <Box sx={style.subordinatesRight}>
+              <Groups2OutlinedIcon />
+              <Typography variant="body1" color="initial">
+                Team subordinates
+              </Typography>
+            </Box>
+          </Stack>
+          <Box sx={style.boxStyles}>
+            <Box sx={style.innerBoxStyles}>
+              <Box sx={style.subcordinatelist}>
                 <Typography
                   variant="body1"
                   color="initial"
-                  className="!text-white"
+                  className="!text-red-600"
                 >
-                  Rank : {showRank(profilerec?.Club)}
+                  {prim?.number_of_register || "0"}
                 </Typography>
-              )}
-            </Box>
-          </Box>
-          <Box sx={style.subcordinateBox}>
-            <Stack
-              direction="row"
-              sx={{
-                width: "92%",
-                background: theme.palette.primary.main,
-                margin: "auto",
-              }}
-            >
-              <Box sx={style.subordinatesleft}>
-                <EmojiPeopleOutlinedIcon />
-                <Typography variant="body1" color="initial">
-                  {" "}
-                  Direct subordinates
-                </Typography>
-              </Box>
-              <Box sx={style.subordinatesRight}>
-                <Groups2OutlinedIcon />
-                <Typography variant="body1" color="initial">
-                  Team subordinates
-                </Typography>
-              </Box>
-            </Stack>
-            <Box sx={style.boxStyles}>
-              <Box sx={style.innerBoxStyles}>
-                <Box sx={style.subcordinatelist}>
-                  <Typography
-                    variant="body1"
-                    color="initial"
-                    className="!text-red-500"
-                  >
-                    {prim?.number_of_register || "0"}
-                  </Typography>
 
-                  <Typography
-                    variant="body1"
-                    color="initial"
-                    className="!text-whtie"
-                  >
-                    Number of Register
-                  </Typography>
-                </Box>
-                <Box sx={style.subcordinatelist}>
-                  <Typography
-                    variant="body1"
-                    color="initial"
-                    className="!text-green-400"
-                  >
-                    {prim?.number_of_active_direct || "0"}
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    color="initial"
-                    className="!text-black"
-                  >
-                    Total Active Direct
-                  </Typography>
-                </Box>
-
-                <Box sx={style.subcordinatelist}>
-                  <Typography
-                    variant="body1"
-                    color="initial"
-                    className="!text-red-400"
-                  >
-                    {prim?.total_amt || "0"}
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    color="initial"
-                    className="!text-black"
-                  >
-                    Total Amount
-                  </Typography>
-                </Box>
-              </Box>
-
-              <Box sx={style.innerBoxStylestwo}>
-                <Box sx={style.subcordinatelist}>
-                  <Typography
-                    variant="body1"
-                    color="initial"
-                    className="!text-red-400"
-                  >
-                    {Counting?.number_of_register || "0"}
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    color="initial"
-                    className="!text-black"
-                  >
-                    {" "}
-                    Number of Registers
-                  </Typography>
-                </Box>
-
-                <Box sx={style.subcordinatelist}>
-                  <Typography
-                    variant="body1"
-                    color="initial"
-                    className="!text-green-400"
-                  >
-                    {Counting?.number_of_active_direct || "0"}
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    color="initial"
-                    className="!text-black"
-                  >
-                    {" "}
-                    Total Active Team
-                  </Typography>
-                </Box>
-
-                <Box sx={style.subcordinatelist}>
-                  <Typography
-                    variant="body1"
-                    color="initial"
-                    className="!text-red-400"
-                  >
-                    {Counting?.total_amt || "0"}
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    color="initial"
-                    className="!text-black"
-                  >
-                    {" "}
-                    Total Amount
-                  </Typography>
-                </Box>
-              </Box>
-            </Box>
-
-            <Box sx={style.invitebtn}>
-              <NavLink>
                 <Typography
-                  sx={{}}
-                  onClick={() => {
-                    or_m_user_type === "Dummy User"
-                      ? toast("Dummy User")
-                      : functionTOCopy(
-                          `${front_end_domain}/register/?inviteid=${profile?.rec?.Login_Id}`
-                        );
-                  }}
+                  variant="body1"
+                  color="initial"
+                  className="!text-whtie"
                 >
-                  INVITATION LINK
+                  Number of Register
                 </Typography>
-              </NavLink>
+              </Box>
+              <Box sx={style.subcordinatelist}>
+                <Typography
+                  variant="body1"
+                  color="initial"
+                  className="!text-green-600"
+                >
+                  {prim?.number_of_active_direct || "0"}
+                </Typography>
+                <Typography
+                  variant="body1"
+                  color="initial"
+                  className="!text-black"
+                >
+                  Total Active Direct
+                </Typography>
+              </Box>
+
+              <Box sx={style.subcordinatelist}>
+                <Typography
+                  variant="body1"
+                  color="initial"
+                  className="!text-red-600"
+                >
+                  {prim?.total_amt || "0"}
+                </Typography>
+                <Typography
+                  variant="body1"
+                  color="initial"
+                  className="!text-black"
+                >
+                  Total Amount
+                </Typography>
+              </Box>
+            </Box>
+
+            <Box sx={style.innerBoxStylestwo}>
+              <Box sx={style.subcordinatelist}>
+                <Typography
+                  variant="body1"
+                  color="initial"
+                  className="!text-red-600"
+                >
+                  {Counting?.number_of_register || "0"}
+                </Typography>
+                <Typography
+                  variant="body1"
+                  color="initial"
+                  className="!text-black"
+                >
+                  {" "}
+                  Number of Registers
+                </Typography>
+              </Box>
+
+              <Box sx={style.subcordinatelist}>
+                <Typography
+                  variant="body1"
+                  color="initial"
+                  className="!text-green-600"
+                >
+                  {Counting?.number_of_active_direct || "0"}
+                </Typography>
+                <Typography
+                  variant="body1"
+                  color="initial"
+                  className="!text-black"
+                >
+                  {" "}
+                  Total Active Team
+                </Typography>
+              </Box>
+
+              <Box sx={style.subcordinatelist}>
+                <Typography
+                  variant="body1"
+                  color="initial"
+                  className="!text-red-600"
+                >
+                  {Counting?.total_amt || "0"}
+                </Typography>
+                <Typography
+                  variant="body1"
+                  color="initial"
+                  className="!text-black"
+                >
+                  {" "}
+                  Total Amount
+                </Typography>
+              </Box>
             </Box>
           </Box>
-          <Box
-            sx={style.invitebutton}
-            className="invitebutton"
-            onClick={() => {
-              or_m_user_type === "Dummy User"
-                ? toast("Dummy User")
-                : functionTOCopy(
-                    `${front_end_domain}/register/?inviteid=${profile?.rec?.Login_Id}`
-                  );
-            }}
-          >
-            <Box sx={style.invitbox} className={"!cursor-pointer"}>
+
+          <Box sx={style.invitebtn}>
+            <NavLink>
+              <Typography
+                sx={{}}
+                onClick={() => {
+                  or_m_user_type === "Dummy User"
+                    ? toast("Dummy User")
+                    : functionTOCopy(
+                      `${front_end_domain}/register/?inviteid=${profile?.rec?.Login_Id}`
+                    );
+                }}
+              >
+                INVITATION LINK
+              </Typography>
+            </NavLink>
+          </Box>
+        </Box>
+        <Box
+          sx={style.invitebutton}
+          className="invitebutton"
+          onClick={() => {
+            or_m_user_type === "Dummy User"
+              ? toast("Dummy User")
+              : functionTOCopy(
+                `${front_end_domain}/register/?inviteid=${profile?.rec?.Login_Id}`
+              );
+          }}
+        >
+          <Box sx={style.invitbox} className={"!cursor-pointer"}>
+            <Stack direction="row">
+              <Box component="img" src={copyinvitationcode}></Box>
+              <Typography variant="body1" color="initial">
+                Copy invitation code
+              </Typography>{" "}
+            </Stack>
+            <Stack direction="row">
+              <Typography variant="body1" color="initial">
+                {profile?.rec?.Login_Id}
+              </Typography>
+              <ArrowForwardIosOutlinedIcon />
+            </Stack>
+          </Box>
+
+          <NavLink to="/account/income-main/my-team">
+            <Box sx={style.invitbox}>
               <Stack direction="row">
-                <Box component="img" src={copyinvitationcode}></Box>
+                <Box component="img" src={subcordinatedata}></Box>
                 <Typography variant="body1" color="initial">
-                  Copy invitation code
-                </Typography>{" "}
+                  Subordinate data
+                </Typography>
               </Stack>
               <Stack direction="row">
-                <Typography variant="body1" color="initial">
-                  {profile?.rec?.Login_Id}
-                </Typography>
                 <ArrowForwardIosOutlinedIcon />
               </Stack>
             </Box>
-
-            <NavLink to="/account/income-main/my-team">
-              <Box sx={style.invitbox}>
-                <Stack direction="row">
-                  <Box component="img" src={subcordinatedata}></Box>
-                  <Typography variant="body1" color="initial">
-                    Subordinate data
-                  </Typography>
-                </Stack>
-                <Stack direction="row">
-                  <ArrowForwardIosOutlinedIcon />
-                </Stack>
-              </Box>
-            </NavLink>
-            <NavLink to="/account/income-main/my-team">
-              <Box sx={style.invitbox}>
-                <Stack direction="row">
-                  <Box component="img" src={subcordinatedata}></Box>
-                  <Typography variant="body1" color="initial">
-                    Team data
-                  </Typography>
-                </Stack>
-                <Stack direction="row">
-                  <ArrowForwardIosOutlinedIcon />
-                </Stack>
-              </Box>
-            </NavLink>
-            {/* <NavLink to="/promotion/MyCommission">
+          </NavLink>
+          <NavLink to="/account/income-main/my-team">
+            <Box sx={style.invitbox}>
+              <Stack direction="row">
+                <Box component="img" src={subcordinatedata}></Box>
+                <Typography variant="body1" color="initial">
+                  Team data
+                </Typography>
+              </Stack>
+              <Stack direction="row">
+                <ArrowForwardIosOutlinedIcon />
+              </Stack>
+            </Box>
+          </NavLink>
+          {/* <NavLink to="/promotion/MyCommission">
               <Box sx={style.invitbox}>
                 <Stack direction="row">
                   <Box component="img" src={comitiondetails}></Box>
@@ -344,7 +334,7 @@ function Promotion() {
                 </Stack>
               </Box>
             </NavLink> */}
-            {/* <NavLink to="/promotion/PromotionRule">
+          {/* <NavLink to="/promotion/PromotionRule">
               <Box sx={style.invitbox}>
                 <Stack direction="row">
                   <Box component='img' src={invitationrules}></Box>
@@ -357,7 +347,7 @@ function Promotion() {
                 </Stack>
               </Box>
             </NavLink> */}
-            {/* <NavLink to="/promotion/Server/">
+          {/* <NavLink to="/promotion/Server/">
               <Box sx={style.invitbox}>
                 <Stack direction="row">
                   <Box component='img' src={ageantline}></Box>
@@ -370,7 +360,7 @@ function Promotion() {
                 </Stack>
               </Box>
             </NavLink> */}
-            {/* <NavLink to="/promotion/Rebate/">
+          {/* <NavLink to="/promotion/Rebate/">
               <Box sx={style.invitbox}>
                 <Stack direction="row">
                   <Box component="img" src={rebateratio}></Box>
@@ -383,7 +373,7 @@ function Promotion() {
                 </Stack>
               </Box>
             </NavLink> */}
-            {/* <Box sx={style.promotionBoxOuter}>
+          {/* <Box sx={style.promotionBoxOuter}>
               <Box sx={style.promotionBox}>
                 <Stack direction="row">
                   <Box component="img" src={promotiondata}></Box>
@@ -429,11 +419,11 @@ function Promotion() {
                 </Box>
               </Stack>
             </Box> */}
-            <Box sx={style.promotionBoxOutertwo}></Box>
-          </Box>
+          <Box sx={style.promotionBoxOutertwo}></Box>
         </Box>
-      </Container>
+      </Box>
     </Layout>
+
   );
 }
 
@@ -456,7 +446,7 @@ const style = {
   commitionboxOuter: {
     width: "100%",
     height: "20vh",
-    background: "#F7F8FF",
+    // background: "#F7F8FF",
     "&>img": { width: "100%", height: "100%" },
   },
   commitionbox: {
@@ -486,15 +476,18 @@ const style = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    background: "#F6F6F6",
+    background: avred1,
     borderTopLeftRadius: "10px",
     borderRight: "2px solid #fefefe",
     "&>svg": {
-      color: theme.palette.primary.main,
+      color: 'white',
       fontSize: "25px",
       marginRight: "10px",
     },
-    "&>p": { color: "gray", fontSize: "14px", fontWeight: "500" },
+    "&>p": {
+      color: 'white',
+      fontSize: "14px", fontWeight: "500"
+    },
   },
   subordinatesRight: {
     width: "50%",
@@ -503,14 +496,17 @@ const style = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    background: "#F6F6F6",
+    background: avred1,
     borderTopRightRadius: "10px",
     "&>svg": {
-      color: theme.palette.primary.main,
+      color: 'white',
       fontSize: "25px",
       marginRight: "10px",
     },
-    "&>p": { color: "gray", fontSize: "14px", fontWeight: "500" },
+    "&>p": {
+      color: 'white',
+      fontSize: "14px", fontWeight: "500"
+    },
   },
 
   boxStyles: {
@@ -531,18 +527,15 @@ const style = {
   innerBoxStylestwo: { width: "50%", padding: "0px 0px" },
   subcordinatelist: {
     textAlign: "center",
-    "&>p": { color: "black important", fontSize: "13px" },
+    "&>p": { color: "black important", fontSize: "13px", fontWeight: 600, },
     mb: 1,
   },
   subcordinateBox: {
     width: "100%",
-
-    background: "#F7F8FF",
-    mt: -2,
+    mt: 1,
   },
   invitebutton: {
     width: "100%",
-    background: "#F7F8FF",
   },
   invitebtn: {
     mt: "20px",
@@ -553,7 +546,7 @@ const style = {
       borderRadius: "20px",
       textAlign: "center",
       padding: "10px",
-      background: "red",
+      background: avred1,
       color: "white",
       fontSize: "17px",
       fontWeight: 600,
@@ -569,7 +562,7 @@ const style = {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-    "&>div>img": { width: "30px", marginRight: "10px" },
+    "&>div>img": { width: "30px", marginRight: "10px", filter: 'grayscale()', },
     "&>div>p": {
       fontSize: "14px",
       color: "black !important",

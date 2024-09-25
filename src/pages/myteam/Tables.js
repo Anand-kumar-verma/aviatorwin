@@ -19,6 +19,7 @@ import CustomCircularProgress from "../../shared/loder/CustomCircularProgress";
 import theme from "../../utils/theme";
 import moment from "moment";
 import { deCryptData } from "../../shared/secret";
+import { avred1 } from "../../shared/color";
 export default function Tables() {
   const userid = deCryptData(localStorage.getItem("user_id"));
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -138,7 +139,8 @@ export default function Tables() {
           <div>
             <input
               type="text"
-              className="!bg-[#FBA343] !text-white !rounded-md px-2 py-1"
+              style={{ background: avred1, }}
+              className=" !text-white !rounded-md px-2 py-1"
               placeholder="Search.."
             />
           </div>
@@ -207,33 +209,33 @@ export default function Tables() {
                 {visibleRows?.map((i, index) => {
                   return (
                     <TableRow key={index} className="!w-[95%]">
-                      <TableCell className="!text-black !pl-[2px] !pr-2 !text-center !border-2 !border-r !border-[#E4063A]">
+                      <TableCell className="!text-white !pl-[2px] !pr-2 !text-center !border-2 !border-r !border-[#E4063A]">
                         {index + 1}
                       </TableCell>
-                      <TableCell className="!text-black !pr-2 !pl-1 !text-center border-2 !border-r !border-[#E4063A]">
+                      <TableCell className="!text-white !pr-2 !pl-1 !text-center border-2 !border-r !border-[#E4063A]">
                         {i?.or_m_user_id}
                       </TableCell>
-                      <TableCell className="!text-black !pr-2 !pl-1 !text-center border-2 !border-r !border-[#E4063A]">
+                      <TableCell className="!text-white !pr-2 !pl-1 !text-center border-2 !border-r !border-[#E4063A]">
                         {i?.or_m_name}
                       </TableCell>
                       {Number(member_id) === 1 && (
-                        <TableCell className="!text-black !pr-2 !pl-1 !text-center border-2 !border-r !border-[#E4063A]">
+                        <TableCell className="!text-white !pr-2 !pl-1 !text-center border-2 !border-r !border-[#E4063A]">
                           {i?.or_m_mobile_no}
                         </TableCell>
                       )}
-                      <TableCell className="!text-black !pr-2 !pl-1 !text-center border-2 !border-r !border-[#E4063A]">
+                      <TableCell className="!text-white !pr-2 !pl-1 !text-center border-2 !border-r !border-[#E4063A]">
                         {i?.recharge}
                       </TableCell>
-                      <TableCell className="!text-black !pr-2 !pl-1 !text-center border-2 !border-r !border-[#E4063A]">
+                      <TableCell className="!text-white !pr-2 !pl-1 !text-center border-2 !border-r !border-[#E4063A]">
                         {i?.today_bet}
                       </TableCell>
-                      <TableCell className="!text-black !pr-2 !pl-1 !text-center border-2 !border-r !border-[#E4063A]">
+                      <TableCell className="!text-white !pr-2 !pl-1 !text-center border-2 !border-r !border-[#E4063A]">
                         {Number(member_id) === 1
                           ? i?.active_team
                           : i?.today_dep}
                       </TableCell>
-                      <TableCell className="!text-black !pr-2 !pl-1 !text-center border-2 !border-r !border-[#E4063A]">
-                        {i?.activation_date ? moment(i?.activation_date)?.format("DD-MM-YYYY"):"---"}
+                      <TableCell className="!text-white !pr-2 !pl-1 !text-center border-2 !border-r !border-[#E4063A]">
+                        {i?.activation_date ? moment(i?.activation_date)?.format("DD-MM-YYYY") : "---"}
                       </TableCell>
                     </TableRow>
                   );
@@ -244,7 +246,7 @@ export default function Tables() {
           <Box sx={{ background: "white", mt: 3 }}>
             <Stack spacing={2}>
               <TablePagination
-                sx={{ background: "#FBA343", color: "white" }}
+                sx={{ background: avred1, color: "white" }}
                 rowsPerPageOptions={[10, 15, 20]}
                 component="div"
                 count={game_history_data?.length}

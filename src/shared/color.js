@@ -34,6 +34,7 @@ export const zubgcricklight = "#00B55E";
 
 
 export const avblack = "#131512";
+export const avgraylight = "#2b2b2b";
 export const avred1 = "#E4063A";
 export const avred2 = "#731A2E";
 export const avred3 = "#9B2231";

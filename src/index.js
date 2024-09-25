@@ -17,31 +17,30 @@ const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-  <QueryClientProvider client={queryClient}>
-    <SocketProvider>
-      <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <App />
-          <Toaster
+    <QueryClientProvider client={queryClient}>
+      <SocketProvider>
+        <ThemeProvider theme={theme}>
+          <BrowserRouter>
+            <App />
+            <Toaster
               toastOptions={{
-               
+
                 className: "",
                 style: {
-                  border: `1px solid red`,
-                  color: "#E4063A",
+                  color: "white",
                   fontSize: "15px",
                   marginTop: "100px",
-                  borderRadius: "50px",
-                  // background: "#E4063A",
+                  borderRadius: "5px",
+                  background: "#E4063A",
                 },
               }}
               autoClose={1000}
               limit={1}
             />
-        </BrowserRouter>
-      </ThemeProvider>
-    </SocketProvider>
-  </QueryClientProvider>
+          </BrowserRouter>
+        </ThemeProvider>
+      </SocketProvider>
+    </QueryClientProvider>
   </Provider>
 );
 reportWebVitals();
