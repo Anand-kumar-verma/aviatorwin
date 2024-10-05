@@ -57,22 +57,22 @@ const CountdownTimer = ({ targetDate }) => {
 };
 
 const CustomDate = () => {
-  const { data } = useQuery(["timer_date"], () => TimerFn(), {
-    refetchOnMount: false,
-    refetchOnReconnect: false,
-    retry: false,
-    retryOnMount: false,
-    refetchOnWindowFocus: false,
-  });
-  const Club = data?.data?.data?.club || 0;
-  const targetDate = data?.data?.data?.date || 0;
-  const targetDateObj = targetDate ? new Date(targetDate) : new Date();
+  // const { data } = useQuery(["timer_date"], () => TimerFn(), {
+  //   refetchOnMount: false,
+  //   refetchOnReconnect: false,
+  //   retry: false,
+  //   retryOnMount: false,
+  //   refetchOnWindowFocus: false,
+  // });
+  // const Club = data?.data?.data?.club || 0;
+  // const targetDate = data?.data?.data?.date || 0;
+  // const targetDateObj = targetDate ? new Date(targetDate) : new Date();
   return (
     <div className="App">
-      <CountdownTimer targetDate={targetDateObj} />
+      {/* <CountdownTimer targetDate={targetDateObj} /> */}
       <p className="text-white text-sm">
         Remaining time to Achieve this :{" "}
-        <span className="font-bold">{Club}</span>
+        {/* <span className="font-bold">{Club}</span> */}
       </p>
     </div>
   );

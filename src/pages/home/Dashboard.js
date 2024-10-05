@@ -26,18 +26,14 @@ import profile3 from "../../assets/images/profile3.png";
 import winning_bg from "../../assets/images/winning_bg-d9c728ae.b7e0bb8e663fb68e6f70.png";
 import winerbanner1 from "../../assets/images/winerbanner1.png";
 import Layout from "../../component/layout/Layout";
-import {
-  LastTrade,
-  checkTokenValidity
-} from "../../services/apiCallings";
+import { LastTrade, checkTokenValidity } from "../../services/apiCallings";
 import { endpoint } from "../../services/urls";
 import CustomCircularProgress from "../../shared/loder/CustomCircularProgress";
 import theme from "../../utils/theme";
 import Lottery from "./component/Lottery";
 import { avred1 } from "../../shared/color";
-import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
-import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
-
+import MilitaryTechIcon from "@mui/icons-material/MilitaryTech";
+import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 
 function Dashboard() {
   const progressCircle = useRef(null);
@@ -48,9 +44,6 @@ function Dashboard() {
   };
   const [value, setValue] = useState(1);
 
-  const handleChange = (newValue) => {
-    setValue(newValue);
-  };
   const { isLoading, data } = useQuery(["top_winner"], () => TopWinner(), {
     refetchOnMount: false,
     refetchOnReconnect: false,
@@ -59,20 +52,20 @@ function Dashboard() {
     refetchOnWindowFocus: false,
   });
 
-  const res = data?.data?.earning || [];
-
-  const { data: Trade } = useQuery(["last_trade"], () => LastTrade(), {
-    refetchOnMount: false,
-    refetchOnReconnect: false,
-    retry: false,
-    retryOnMount: false,
-    refetchOnWindowFocus: false,
-  });
-  const trade = Trade?.data?.earning || [];
+  const res = data?.data?.data || [];
+// console.log(res);
+//   const { data: Trade } = useQuery(["last_trade"], () => LastTrade(), {
+//     refetchOnMount: false,
+//     refetchOnReconnect: false,
+//     retry: false,
+//     retryOnMount: false,
+//     refetchOnWindowFocus: false,
+//   });
+//   const trade = Trade?.data?.earning || [];
 
   const TopWinner = async () => {
     try {
-      const response = await axios.get(endpoint.win_list_top);
+      const response = await axios.get(endpoint.node_api.get_top_users);
       return response;
     } catch (e) {
       toast(e?.message);
@@ -87,7 +80,6 @@ function Dashboard() {
       window.location.href = "/"; // Redirect to login page
     }
   }, []);
-
 
   const imageSources = [
     "https://mui.com/static/images/avatar/2.jpg",
@@ -104,7 +96,7 @@ function Dashboard() {
     <Layout>
       <CustomCircularProgress isLoading={isLoading} />
       <Swiper
-        style={{ marginTop: '16px', borderRadius: '5px', overflow: 'hidden' }}
+        style={{ marginTop: "16px", borderRadius: "5px", overflow: "hidden" }}
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
@@ -144,22 +136,26 @@ function Dashboard() {
           px: 1,
           py: 1,
           background: avred1,
-          border: `1px solid ${avred1}`, mt: 2,
-          borderRadius: '3px'
+          border: `1px solid ${avred1}`,
+          mt: 2,
+          borderRadius: "3px",
         }}
       >
-        <VolumeUpIcon sx={{ color: 'white', mr: 1 }} />
+        <VolumeUpIcon sx={{ color: "white", mr: 1 }} />
         <Typography
           className="fp13"
           sx={{
             mr: 1,
             textAlign: "center",
-            color: 'white',
+            color: "white",
           }}
         >
           1.All recharge methods only available in RECHARGE menu on OFFICIAL
         </Typography>
-        <Typography sx={{ background: '#131512' }} className="!text-white !text-xs  !font-bold rounded-2xl px-2 !flex justify-center">
+        <Typography
+          sx={{ background: "#131512" }}
+          className="!text-white !text-xs  !font-bold rounded-2xl px-2 !flex justify-center"
+        >
           <WhatshotIcon fontSize="small" />{" "}
           <span className="my-1">Details</span>
         </Typography>
@@ -172,10 +168,7 @@ function Dashboard() {
           padding: "4px 15px",
           mt: 1,
         }}
-      >
-
-
-      </Stack>
+      ></Stack>
 
       {value === 1 && <Lottery />}
 
@@ -200,12 +193,8 @@ function Dashboard() {
         <Box mt={2}>
           {res?.slice(2)?.map((i, index) => {
             return (
-              <Stack
-                key={index}
-                direction="row"
-                sx={style.winnerslider}
-              >
-                <div style={{ position: 'relative' }}>
+              <Stack key={index} direction="row" sx={style.winnerslider}>
+                <div style={{ position: "relative" }}>
                   <Box
                     width={25}
                     height={25}
@@ -221,13 +210,8 @@ function Dashboard() {
                     height={45}
                     sx={style.winnerprofile}
                   ></Box>
-
                 </div>
-                <Typography
-                  variant="body1"
-
-                  sx={style.winnername}
-                >
+                <Typography variant="body1" sx={style.winnername}>
                   <p className="!flex !flex-col">
                     <span>{i?.or_m_user_id}</span>
                     <span>{i?.or_m_name?.substring(0, 5)}</span>
@@ -242,18 +226,10 @@ function Dashboard() {
                   ></Box>
                 </Box>
                 <Box>
-                  <Typography
-                    variant="body1"
-
-                    sx={style.winneramout || 0}
-                  >
-                    Receive ₹{i?.max_tr_pv}
+                  <Typography variant="body1" sx={style.winneramout || 0}>
+                    Receive ₹{i?.amountcashed}
                   </Typography>
-                  <Typography
-                    variant="body1"
-
-                    sx={style.winnertitle}
-                  >
+                  <Typography variant="body1" sx={style.winnertitle}>
                     Winning amount
                   </Typography>
                 </Box>
@@ -264,7 +240,9 @@ function Dashboard() {
       </Box>
       <Box sx={{ px: 2, py: 3 }}>
         <Stack direction={"row"} sx={{ alignItems: "center" }}>
-          <CalendarMonthOutlinedIcon sx={{ fontSize: "18px", fontWeight: 700, color: avred1 }} />
+          <CalendarMonthOutlinedIcon
+            sx={{ fontSize: "18px", fontWeight: 700, color: avred1 }}
+          />
           <Typography
             variant="body1"
             sx={{ fontSize: "18px", fontWeight: 700, ml: 1, color: avred1 }}
@@ -300,7 +278,7 @@ function Dashboard() {
                     color="initial"
                     sx={style.winningamount}
                   >
-                    ₹{res?.[1]?.max_tr_pv}
+                    ₹{res?.[1]?.amountcashed}
                   </Typography>
                 </Box>
               </Box>
@@ -338,7 +316,7 @@ function Dashboard() {
                     color="initial"
                     sx={style.winningamount}
                   >
-                    ₹{res?.[0]?.max_tr_pv}
+                    ₹{res?.[0]?.amountcashed}
                   </Typography>
                 </Box>
               </Box>
@@ -377,7 +355,7 @@ function Dashboard() {
                     color="initial"
                     sx={style.winningamount}
                   >
-                    ₹{res?.[2]?.max_tr_pv}
+                    ₹{res?.[2]?.amountcashed}
                   </Typography>
                 </Box>
               </Box>
@@ -385,12 +363,8 @@ function Dashboard() {
           </Box>
           {res?.slice(0, 2)?.map((i, index) => {
             return (
-              <Stack
-                key={index}
-                direction="row"
-                sx={style.winnerslider}
-              >
-                <div style={{ position: 'relative' }}>
+              <Stack key={index} direction="row" sx={style.winnerslider}>
+                <div style={{ position: "relative" }}>
                   <Box
                     width={25}
                     height={25}
@@ -406,13 +380,8 @@ function Dashboard() {
                     height={45}
                     sx={style.winnerprofile}
                   ></Box>
-
                 </div>
-                <Typography
-                  variant="body1"
-
-                  sx={style.winnername}
-                >
+                <Typography variant="body1" sx={style.winnername}>
                   <p className="!flex !flex-col">
                     <span>{i?.or_m_user_id}</span>
                     <span>{i?.or_m_name?.substring(0, 5)}</span>
@@ -427,18 +396,10 @@ function Dashboard() {
                   ></Box>
                 </Box>
                 <Box>
-                  <Typography
-                    variant="body1"
-
-                    sx={style.winneramout || 0}
-                  >
-                    Receive ₹{i?.max_tr_pv}
+                  <Typography variant="body1" sx={style.winneramout || 0}>
+                    Receive ₹{i?.amountcashed}
                   </Typography>
-                  <Typography
-                    variant="body1"
-
-                    sx={style.winnertitle}
-                  >
+                  <Typography variant="body1" sx={style.winnertitle}>
                     Winning amount
                   </Typography>
                 </Box>
@@ -446,9 +407,11 @@ function Dashboard() {
             );
           })}
         </Box>
-        <Box sx={{ mt: 5, mb: 5, }}>
+        <Box sx={{ mt: 5, mb: 5 }}>
           <Stack direction={"row"} sx={{ alignItems: "center" }}>
-            <CalendarMonthOutlinedIcon sx={{ fontSize: "18px", fontWeight: 700, color: avred1 }} />
+            <CalendarMonthOutlinedIcon
+              sx={{ fontSize: "18px", fontWeight: 700, color: avred1 }}
+            />
             <Typography
               variant="body1"
               sx={{ fontSize: "18px", fontWeight: 700, ml: 1, color: avred1 }}
@@ -456,14 +419,10 @@ function Dashboard() {
               Last Trade Top Winner
             </Typography>
           </Stack>
-          {trade?.slice(0, 5)?.map((i, index) => {
+          {/* {trade?.slice(0, 5)?.map((i, index) => {
             return (
-              <Stack
-                key={index}
-                direction="row"
-                sx={style.winnerslider}
-              >
-                <div style={{ position: 'relative' }}>
+              <Stack key={index} direction="row" sx={style.winnerslider}>
+                <div style={{ position: "relative" }}>
                   <Box
                     width={25}
                     height={25}
@@ -479,13 +438,8 @@ function Dashboard() {
                     height={45}
                     sx={style.winnerprofile}
                   ></Box>
-
                 </div>
-                <Typography
-                  variant="body1"
-
-                  sx={style.winnername}
-                >
+                <Typography variant="body1" sx={style.winnername}>
                   <p className="!flex !flex-col">
                     <span>{i?.or_m_user_id}</span>
                     <span>{i?.or_m_name?.substring(0, 5)}</span>
@@ -500,27 +454,19 @@ function Dashboard() {
                   ></Box>
                 </Box>
                 <Box>
-                  <Typography
-                    variant="body1"
-
-                    sx={style.winneramout || 0}
-                  >
-                    Receive ₹{i?.max_tr_pv}
+                  <Typography variant="body1" sx={style.winneramout || 0}>
+                    Receive ₹{i?.amountcashed}
                   </Typography>
-                  <Typography
-                    variant="body1"
-
-                    sx={style.winnertitle}
-                  >
+                  <Typography variant="body1" sx={style.winnertitle}>
                     Winning amount
                   </Typography>
                 </Box>
               </Stack>
             );
-          })}
+          })} */}
         </Box>
       </Box>
-    </Layout >
+    </Layout>
   );
 }
 
@@ -548,9 +494,9 @@ const style = {
     alignItems: "center",
     padding: "10px 0px 10px 5px",
     backgroundImage: `url(${winning_bg})`,
-    filter: 'hue-rotate(97deg)',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: '100% 100%',
+    filter: "hue-rotate(97deg)",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "100% 100%",
     borderRadius: "10px",
     my: 1.5,
     boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
@@ -560,27 +506,43 @@ const style = {
     borderRadius: "50%",
     objectPosition: "center",
     objectFit: "cover",
-    marginTop: '-25px',
-    marginLeft: '-3px',
-    filter: 'hue-rotate(-97deg)',
+    marginTop: "-25px",
+    marginLeft: "-3px",
+    filter: "hue-rotate(-97deg)",
   },
-  winnername: { fontSize: "12px", fontWeight: 400, mx: 1, color: 'white', '&>p>span': { color: 'white', } },
+  winnername: {
+    fontSize: "12px",
+    fontWeight: 400,
+    mx: 1,
+    color: "white",
+    "&>p>span": { color: "white" },
+  },
   winnerbannerouter: {
     background: theme.palette.primary.main,
     width: "23%",
     borderRadius: "10px",
     objectPosition: "center",
-    filter: 'hue-rotate(-97deg)'
+    filter: "hue-rotate(-97deg)",
   },
   winnerbannerinner: {
     width: "100%",
     borderRadius: "10px",
     objectPosition: "center",
     objectFit: "cover",
-    filter: 'hue-rotate(0deg)',
+    filter: "hue-rotate(0deg)",
   },
-  winneramout: { fontSize: "12px", fontWeight: 600, marginLeft: 1, color: 'white' },
-  winnertitle: { fontSize: "11px", fontWeight: 400, marginLeft: 1, color: 'white' },
+  winneramout: {
+    fontSize: "12px",
+    fontWeight: 600,
+    marginLeft: 1,
+    color: "white",
+  },
+  winnertitle: {
+    fontSize: "11px",
+    fontWeight: 400,
+    marginLeft: 1,
+    color: "white",
+  },
   podiumbox: {
     backgroundImage: `url(${podium})`,
     width: "100%",
@@ -641,11 +603,11 @@ const style = {
     background: "#E4063A",
   },
   bca: {
-    width: '25px',
-    height: '25px',
-    position: 'absolute',
-    bottom: '120%',
-    left: '-33%',
-    transform: 'rotate(-7deg)',
+    width: "25px",
+    height: "25px",
+    position: "absolute",
+    bottom: "120%",
+    left: "-33%",
+    transform: "rotate(-7deg)",
   },
 };

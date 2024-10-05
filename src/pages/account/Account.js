@@ -84,7 +84,6 @@ function Account() {
   const searchParams = new URLSearchParams(location.search);
   const transactionId = searchParams?.get("orderid");
   const client = useQueryClient();
-  const user_id = deCryptData(localStorage.getItem("user_id"));
   const navigate = useNavigate();
   const [opend, setOpend] = useState(false);
   const [selectedImages, setselectedImages] = useState("");

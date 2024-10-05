@@ -12,17 +12,15 @@ import PlayGame from "./GamePage/PlayGame";
 import { deCryptData } from "./shared/secret";
 function App() {
   const isAuthenticated = deCryptData(localStorage.getItem("user_id"));
-  useQuery(["team_count"], () => TeamsubFunction(), {
-    refetchOnMount: false,
-    refetchOnReconnect: false,
-    refetchOnMount: false,
-    refetchOnReconnect: false,
-    retry: false,
-    retryOnMount: false,
-    refetchOnWindowFocus: false,
-  });
-
- 
+  // useQuery(["team_count"], () => TeamsubFunction(), {
+  //   refetchOnMount: false,
+  //   refetchOnReconnect: false,
+  //   refetchOnMount: false,
+  //   refetchOnReconnect: false,
+  //   retry: false,
+  //   retryOnMount: false,
+  //   refetchOnWindowFocus: false,
+  // });
 
   return (
     <Routes>
